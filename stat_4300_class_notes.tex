@@ -1,0 +1,64 @@
+\documentclass[10pt]{extarticle}
+
+\input{style}
+\usepackage{cancel}
+\usepackage{stackengine}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{stmaryrd}
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{array} % put this in your preamble
+\usepackage{adjustbox} % put this in your preamble
+\pgfplotsset{compat=newest}
+\usetikzlibrary{positioning,arrows.meta}
+\usepgfplotslibrary{fillbetween}
+
+\title{TA's Notes - STAT-4300 Spring'26}
+\date{\today}
+
+\newcommand{\vtr}[1]{\bm{#1}} % or \bm
+\newcommand{\mtr}[1]{\bm{#1}} % or \bm
+\newcommand{\Var}{\mathbb{V}}
+\newcommand{\symd}{\ \triangle\ }
+\begin{document}
+
+% \setlength{\abovedisplayskip}{3pt}
+% \setlength{\belowdisplayskip}{3pt}
+% \setlength{\abovedisplayshortskip}{0pt}
+% \setlength{\belowdisplayshortskip}{0pt}
+
+\maketitle
+\newpage
+
+
+%Custom colors for different environments
+\definecolor{contcol1}{HTML}{72E094}
+\definecolor{contcol2}{HTML}{24E2D6}
+\definecolor{convcol1}{HTML}{C0392B}
+\definecolor{convcol2}{HTML}{8E44AD}
+
+\begin{tcolorbox}[
+    title=Contents, 
+    fonttitle=\huge\sffamily\bfseries\selectfont,
+    interior style={left color=contcol1!40!white,right color=contcol2!40!white},
+    frame style={left color=contcol1!80!white,right color=contcol2!80!white},
+    interior style={left color=blue!40!white, right color=cyan!40!white},
+    frame style={left color=blue!80!white, right color=cyan!80!white},
+        colbacktitle=contcol1!40!white, % highlight color behind Contents
+        coltitle=black,
+        top=2mm,bottom=2mm,left=2mm,right=2mm,breakable
+]
+\makeatletter
+\@starttoc{toc}
+\makeatother
+\end{tcolorbox}
+
+\newpage
+
+\input{classes/class_1.tex}
+
+\end{document}

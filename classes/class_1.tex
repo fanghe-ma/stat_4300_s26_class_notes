@@ -1,0 +1,399 @@
+\section{Class 1 - Set Theory, Probability, and Indicator Functions}
+
+\subsection{Set Theory}
+
+\subsubsection{Review of basic definitions}
+We begin with definitions that should be familiar. 
+
+\begin{definition}[Set]: A \textbf{set} is a collection of elements.
+\end{definition}
+
+\begin{definition}[Subset and superset]: A set $A$ is a \textbf{subset} of $B$ if every element of $A$ is also an element of $B$, denoted 
+  \[
+      A \subset B
+  \]
+  Equivalently, $B$ is a \textbf{superset} of $A.$
+\end{definition}
+
+\begin{definition}[Null set and empty set] The set with no elements is called the \textbf{null set} or the \textbf{empty set}, denoted $\emptyset$.
+\end{definition}
+
+\begin{remark}
+  The null set is a subset of any set. I.e. for any $A$,
+  \[
+      \emptyset \subset A
+  \]
+\end{remark}
+
+\begin{definition}
+  (Universal set): The \textbf{universal set} is the set of all things that we could possibly consider in the context we are studying. 
+\end{definition}
+
+\begin{remark}
+  In probability, the universal set is typically the sample space denoted $\Omega$
+\end{remark}
+
+\subsubsection{Review of set operations}
+Except for \textbf{symmetric difference}, most of these set operations should be familiar.
+
+\begin{definition}[Union]: The \textbf{union} of two sets, $A$ and $B$, is a set containing all the elements that are in $A$ or in $B$ (possibly both). \\
+
+  The union of two sets, $A$ and $B$ is denoted 
+  \[
+  A \cup B
+  \]
+  The union of three or more sets, say $A_1, A_2, \hdots A_n$ is denoted 
+  \[
+      A_1 \cup A_2 \cup A_3 \hdots \cup A_n = \bigcup_{i = 1}^n A_i
+  \]
+\end{definition}
+
+\begin{definition}
+  [Intersection]: The \textbf{intersection} of two sets, $A$ and $B$, is a set containing all the elements that are both in $A$ and $B$. \\
+
+  The intersection of two sets, $A$ and $B$ is denoted 
+  \[
+  A \cap B
+  \]
+  The intersection of three or more sets, say $A_1, A_2, \hdots A_n$ is denoted 
+  \[
+      A_1 \cap A_2 \cap A_3 \hdots \cap A_n = \bigcap_{i = 1}^n A_i
+  \]
+\end{definition}
+
+\begin{definition}
+  [Complement]: The \textbf{complement} of a set $A$ denoted by $A^C$ is the set of all elements that are in the universal set $S$ but are not in $A$.
+\end{definition}
+
+\begin{definition}
+  [Difference, subtraction of sets]: The \textbf{difference} of two sets is defined where $A - B$ consists of the elements that are in $A$ but not in $B$. This is denoted
+  \[
+      A - B = A \setminus B = \{ x \in \Omega: x \in A, x \notin B \} 
+  \]
+\end{definition}
+
+\begin{remark}
+  From the above definition, it should be clear that 
+  \[
+      A - B = A \cap B^C
+  \]
+\end{remark}
+
+\begin{definition}
+  [Mutually exclusive, disjoint]: Two sets, $A$ and $B$, are \textbf{mutually exclusive} or \textbf{disjoint} if they do not have any shared elements, i.e. 
+  \[
+      A \cap B = \emptyset
+  \]
+\end{definition}
+
+For three or more sets, the sets having a trivial intersection does not mean they are disjoint. Instead, we require the stronger condition below.
+
+\begin{definition}
+  [Pairwise disjoint]: Several sets are \textbf{pairwise disjoint} if no two sets share a common element.
+\end{definition}
+
+% \begin{definition}
+%   (Partition): We say that a collection of nonempty sets $A_1, A_2, \hdots$ form a \textbf{partition} of $A$ if they are disjoint and their union is $A$.
+% \end{definition}
+
+
+\subsubsection{Review of common set properties}
+
+\begin{theorem}
+  (De Morgan's law): For sets $A_1, A_2, \hdots A_n$, we have 
+  \begin{itemize}
+      \item $ \left( A_1 \cup A_2 \cup \hdots A_n \right)^C = A_1^C \cap A_2^C \cap \hdots A_n^C $
+      \item $ \left( A_1 \cap A_2 \cap \hdots A_n \right)^C = A_1^C \cup A_2^C \cup \hdots A_n^C $
+  \end{itemize} 
+\end{theorem}
+
+\begin{theorem}
+  (Distributive law): For any sets $A, B, C$, we have 
+  \begin{itemize}
+    \item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+    \item $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
+  \end{itemize}
+\end{theorem}
+
+\subsubsection{The symmetric difference}
+Pay especially close attention to the symmetric difference, which may not have been emphasized upon in previous courses.
+
+\begin{definition}
+  [Symmetric difference]: The \textbf{symmetric difference} of two sets, $A$ and $B$, is defined as the set of elements that are only in $A$ or in $B$, but not both. This is denoted
+  \[
+  A \symd B
+  \]
+
+  The symmetric difference of two sets is their union, minus their intersection 
+  \[
+      A \symd B = (A \cup B) \setminus (A \cap B)
+  \]
+\end{definition}
+
+\begin{result}
+  Properties of the symmetric difference
+  \begin{enumerate}
+      \item Commutativity
+      \[
+      A \symd B = B \symd A
+      \]
+      \item Associativity
+      \[
+      (A \symd B) \symd C = A \symd (B \symd C)
+      \]
+      \item Distributivity of the intersection 
+      \[
+          A \cap \left( B \symd C \right)  = \left( A \cap B \right)  \symd (A \cap C)
+      \]
+      \item The symmetric difference is trivial if and only if the two sets are equal 
+      \[
+          A \symd B = \emptyset \iff A = B
+      \]
+      \item Taking complement with respect to the same universal set, 
+      \[
+      A \symd B = A^C \symd B^C
+      \]
+      \item The symmetric difference is a subset of the union
+      \[
+      A \symd B \subseteq A \cup B
+      \]
+      \item The symmetric difference is equal to the union if and only if the sets are disjoint 
+      \[
+      A \symd B = A \cup B \iff A \cap B = \emptyset
+      \]
+      \item The symmetric difference and the intersection partition the union, since
+      \begin{align*}
+          & (A \symd B) \cap (A \cap B) = \emptyset  \\
+          & (A \symd B) \cup (A \cap B) = A \cup B
+      \end{align*}
+      \textit{The concept of partition will be introduced in Class 2}
+      \item We can define the union using 
+      \[
+          A \cup B = (A \symd B) \symd (A \cap B)
+      \]
+  \end{enumerate} 
+\end{result}
+
+The following result is especially important. Hence we discuss it separately. 
+
+\begin{lemma}
+  \label{lem:symm-diff-union}
+  Given arbitrary sets $A_1, A_2, \hdots A_n$ and $B_1, B_2, \hdots B_n$, 
+  \begin{align*}
+    \left( \bigcup_{i = 1}^n A_i \right)  \symd \left( \bigcup_{i = 1}^n B_i \right)  \subseteq \bigcup_{i = 1}^n \left( A_i \symd B_i \right) 
+  \end{align*}
+\end{lemma}
+
+The proof of this lemma is revisited later in the lecture after the introduction of indicator functions. We will see that the proof is simple once we introduce indicators.
+
+\subsection{Probabilities}
+
+\subsubsection{Review}
+
+\begin{definition}
+  [Random experiment, outcome, sample space]: 
+  \begin{itemize}
+      \item A \textbf{random experiment} is a process by which we observe something uncertain.
+      \item The result of a random experiment is an \textbf{outcome}. 
+      \item The set of possible outcomes is the sample space.
+  \end{itemize} 
+\end{definition}
+
+\begin{definition}
+  [Event]: An \textbf{event} $E$ is a subset of the sample space, i.e. a collection of outcomes.
+\end{definition}
+
+\begin{remark}
+  If $A$ and $B$ are events, then $A \cup B$ and $A \cap B$ are also events. \\
+
+  $A \cup B$ occurs if $A$ \textbf{or} $B$ occurs. \\
+
+  $A \cap B$ occurs if $A$ \textbf{and} $B$ occurs. \\
+\end{remark}
+
+\begin{definition}
+  [Probability]: The \textbf{probability} measure of event $A$ is denoted $P(A)$.
+\end{definition}
+
+
+\subsubsection{Axioms of probability}
+\begin{definition}
+  [Axioms of probability]: The axioms of probability state that 
+  \begin{enumerate}
+      \item For any event $A$, $P(A) \geq 0$
+      \item Probability of the sample space $\Omega$ is $P(\Omega) = 1$
+      \item If $A_1, A_2, A_3 \hdots$ are disjoint, then 
+      \[
+      P(A_1 \cup A_2 \cup A_3 \hdots) = P(A_1) + P(A_2) + P(A_3) + \hdots
+      \]
+  \end{enumerate} 
+\end{definition}
+
+\subsubsection{Inclusion-Exclusion Principle}
+
+\begin{result}
+  [Inclusion-exclusion]: By the \textbf{inclusion-exclusion principle}, we have 
+  \[
+  P(A \cup B) = P(A) + P(B) - P(A \cap B)
+  \]
+  In general for $n$ events $A_1, \hdots A_n$, 
+  \begin{align*}
+  P \left( \cup_{i =1}^n A_i \right)  &= \sum\limits_{i = 1}^{n}  P(A_i) \\
+& - \sum\limits_{i < j}^{}  P(A_i \cap A_j) \\
+& + \sum\limits_{i < j < k}^{}  P(A_i \cap A_j \cap A_k) \\
+& \vdots \\
+& + (-1)^{n-1} P\left(\bigcap_{i = 1}^n A_i\right) \\
+  \end{align*}
+\end{result}
+
+
+
+\subsection{Indicator Functions}
+
+\subsubsection{Definition}
+
+\begin{definition}
+  [Indicator function]: Given an arbitrary set $X$, and a subset $A \subseteq X$, the \textbf{indidcator function} of $A$ is 
+  \[
+  \bm{1}_A(x) = \begin{cases}
+    1 \text{ if } x \in A \\
+    0 \text{ if } x \notin A
+  \end{cases}
+  \]
+\end{definition}
+
+\subsubsection{Properties of the indicator function}
+
+\begin{result}
+  Properties of the indicator function 
+  \begin{enumerate}
+    \item Indicator of the intersection is the product of indicators
+    \[
+    \bm{1}_{A \cap B} (x) = \min \{ \bm{1}_A(x), \bm{1}_B(x) \} = \bm{1}_A(x) \cdot \bm{1}_B(x)
+    \]
+    \item Ihe indicator of the union is sum of indicators minus their product
+    \begin{align*}
+    \bm{1}_{A \cup B} (x) &= \max \{ \bm{1}_A(x), \bm{1}_B(x) \} \\
+    & = \bm{1}_A(x) + \bm{1}_B(x) - \bm{1}_A(x) \cdot \bm{1}_B(x) \\
+    & = \bm{1}_A(x) + \bm{1}_B(x) - \bm{1}_{A \cap B}(x) \\
+    \end{align*}
+    \item Indicator of the complement 
+    \[
+    \bm{1}_{A^C} = 1 - \bm{1}_A
+    \]
+    \item If $A, B$ disjoint 
+    \begin{align*}
+    \bm{1}_{A \cup B} &= \bm{1}_{A} + \bm{1}_B \\
+    \bm{1}_{A \cap B} &= 0
+    \end{align*}
+    \item Indicators of subsets
+    \[
+    A \subseteq B \iff \bm{1}_A \leq \bm{1}_B
+    \]
+    \item Indicators of difference of subsets
+    \begin{align*}
+      \bm{1}_{A - B}
+      &= \bm{1}_{A \cap B^C} \quad \text{by definition of set subtraction} \\
+      &= \bm{1}_A \cdot \bm{1}_{B^C} \quad \text{by indicator of intersections} \\
+      &= \bm{1}_A\bigl(1 - \bm{1}_B\bigr) \quad \text{by indicator of complement} \\
+      &= \bm{1}_A - \bm{1}_{A \cap B} \quad \text{by indicator of intersections}
+    \end{align*}
+    \item Indicators of symmetric difference
+    \begin{align*}
+      \bm{1}_{A \symd B}
+      &= \bm{1}_{(A \cup B) \setminus (A \cap B)}
+        \quad \text{by definition of symmetric difference} \\[6pt]
+      &= \bm{1}_{A \cup B} \cdot \bm{1}_{(A \cap B)^C}
+        \quad \text{by definition of set subtraction} \\[6pt]
+      &= \bm{1}_{A \cup B}\bigl(1 - \bm{1}_{A \cap B}\bigr)
+        \quad \text{by indicator of complement} \\[6pt]
+      &= \bigl(\bm{1}_A + \bm{1}_B - \bm{1}_{A \cap B}\bigr)
+        \bigl(1 - \bm{1}_{A \cap B}\bigr)
+        \quad \text{by indicator of union} \\[6pt]
+      &= \bm{1}_A + \bm{1}_B - 2\,\bm{1}_{A \cap B}
+        \quad \text{since } \bm{1}_{A \cap B}^2 = \bm{1}_{A \cap B} \\[6pt]
+      &= \bigl|\bm{1}_A - \bm{1}_B\bigr|
+    \end{align*}
+  \end{enumerate}
+\end{result}
+
+\subsubsection{Demonstrating the usefulness of indicators}
+Recall Lemma~\ref{lem:symm-diff-union}. Given arbitrary sets $A_1,\dots,A_n$ and $B_1,\dots,B_n$,
+\[
+\left( \bigcup_{i=1}^n A_i \right)
+\symd
+\left( \bigcup_{i=1}^n B_i \right)
+\subseteq
+\bigcup_{i=1}^n (A_i \symd B_i).
+\]
+
+We can prove this lemma by reducing the set inclusion to an inequality involving indicator functions.
+
+\begin{proof}
+  By property 1.23.5, it suffices to show 
+\begin{equation*}
+\bm{1}_{\left(\cup_{i=1}^n A_i\right)\symd\left(\cup_{i=1}^n B_i\right)}
+\le
+\bm{1}_{\cup_{i=1}^n (A_i \symd B_i)}
+\end{equation*}
+
+By property 1.23.7 (indicator of symmetric differences), the LHS can be written as
+\[
+\left|
+\bm{1}_{\cup_{i=1}^n A_i}(x)
+-
+\bm{1}_{\cup_{i=1}^n B_i}(x)
+\right|
+\]
+
+By property 1.23.2 (indicator of unions)
+\[
+\bm{1}_{\cup_{i=1}^n A_i}(x) = \max_{1 \le i \le n} \bm{1}_{A_i}(x),
+\qquad
+\bm{1}_{\cup_{i=1}^n B_i}(x) = \max_{1 \le i \le n} \bm{1}_{B_i}(x),
+\]
+Hence we get 
+\begin{equation*}
+\left|
+\max_{1 \le i \le n} \bm{1}_{A_i}(x)
+-
+\max_{1 \le i \le n} \bm{1}_{B_i}(x)
+\right|
+\le
+\bm{1}_{\cup_{i=1}^n (A_i \symd B_i)}(x)
+\end{equation*}
+
+We now prove this inequality by enumerating the possible values of the
+right-hand side.
+
+\medskip
+
+\noindent
+\textbf{Case 1:} RHS = 0
+\begin{align*}
+& \bm{1}_{\cup_{i=1}^n (A_i \symd B_i)}(x) = 0 \\
+\implies  & x \notin A_i \symd B_i \text{ for all } i \\
+\implies & \bm{1}_{A_i}(x) = \bm{1}_{B_i}(x) \text{ for all } i \\
+\implies &  \max_{i} \bm{1}_{A_i}(x) = \max_{i} \bm{1}_{B_i}(x) \\
+\implies & 
+\left|
+\max_{1 \le i \le n} \bm{1}_{A_i}(x)
+-
+\max_{1 \le i \le n} \bm{1}_{B_i}(x)
+\right| = 0
+\end{align*}
+Hence the inequality holds.
+
+\medskip
+
+\noindent
+\textbf{Case 2:} RHS = 1 
+
+Since the LHS is the absolute value of the difference of indicators, it takes values $0$ or $1$, and this is a simple upper bound.
+
+\medskip
+
+In both cases, the inequality holds. Since this inequality is
+equivalent to the desired set inclusion, the lemma follows.
+\end{proof}
+\newpage
