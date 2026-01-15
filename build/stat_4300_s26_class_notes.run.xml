@@ -44,11 +44,11 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>stat_4300_class_notes.aux</file>
-      <file>stat_4300_class_notes-blx.bib</file>
+      <file>stat_4300_s26_class_notes.aux</file>
+      <file>stat_4300_s26_class_notes-blx.bib</file>
     </provides>
     <requires type="dynamic">
-      <file>stat_4300_class_notes.bbl</file>
+      <file>stat_4300_s26_class_notes.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -67,20 +67,20 @@
     <cmdline>
       <binary>bibtex</binary>
       <option>-min-crossrefs 2</option>
-      <infile>stat_4300_class_notes</infile>
+      <infile>stat_4300_s26_class_notes</infile>
     </cmdline>
     <input>
-      <file>stat_4300_class_notes.aux</file>
+      <file>stat_4300_s26_class_notes.aux</file>
     </input>
     <output>
-      <file>stat_4300_class_notes.bbl</file>
+      <file>stat_4300_s26_class_notes.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>stat_4300_class_notes.bbl</file>
+      <file>stat_4300_s26_class_notes.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>stat_4300_class_notes.aux</file>
-      <file>stat_4300_class_notes-blx.bib</file>
+      <file>stat_4300_s26_class_notes.aux</file>
+      <file>stat_4300_s26_class_notes-blx.bib</file>
     </requires>
     <requires type="editable">
       <file>bibliography</file>
