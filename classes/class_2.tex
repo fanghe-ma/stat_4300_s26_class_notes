@@ -1,0 +1,227 @@
+\section{Class 2 - Conditional Probability and Independence}
+
+\subsection{Conditional Probability}
+% \begin{example}
+%     [Motivating example: Polymarket] Let $\Omega_{world}$ be the sample space of all future states of the world. Each element of the sample space $\omega \in \Omega_{world}$ represents a possible future state of the world. \\ 
+
+%     Let $A$ be the event that Trump acquires Greenland by 2027. \\
+
+%     Traded contract: Binary contract on $A$. 
+%     \begin{itemize}
+%         \item if $\omega \in A$, contract pays \$1
+%         \item otherwise, contract pays \$0
+%     \end{itemize} 
+
+%     Price of a share: $p = P(A)$ \\
+
+%     Let $B$ be the event that Denmark wants to negotiate. We are interested in the probability of $A$ given $B$ has occured, i.e. $P(A | B)$. \\
+
+%     The market reaction is an increase in price from $p = P(A)$ to $p_B = P(A | B)$.
+% \end{example}
+
+\begin{definition}
+    [Conditional Probability] Let $A, B$ be events in a sample space $S$, with $P(B) > 0$, then the \textbf{conditional probability} of $A$ given $B$ is defined as 
+    \[
+        P(A | B) = \frac{P(A \cap B)}{P(B)}
+    \]
+\end{definition}
+
+\begin{remark} 
+    \textbf{Conditional probability is a probability}. Fix $B$, define $P_B( \cdot) = P( \cdot | B)$. Then, $P(\cdot | B)$ satisfies the three axioms of probability on the reduced sample space $B$.
+    \begin{enumerate}
+        \item Nonnegativity. For any $A$, $P(A | B) \geq 0$
+        \item Normalized. $P(B | B) = 1$
+        \item Countable additivity. If $A_1, A_2, A_3, \hdots$ disjoint, then 
+        \[
+            P(A_1 \cup A_2 \cup A_3 \hdots | B) = P(A_1 | B) + P(A_2 | B) + P(A_3| B) + \hdots
+        \]
+    \end{enumerate}
+\end{remark}
+
+\begin{proof}
+    We verify the three axioms:
+    \begin{enumerate}
+        \item For any $A$, since $P(A \cap B) \geq 0$ and $P(B) > 0$, we have 
+        \[
+            P(A | B) = \frac{P(A \cap B)}{P(B)} \geq 0
+        \]
+        \item 
+        \[
+            P(B | B) = \frac{P(B \cap B)}{P(B)} = \frac{P(B)}{P(B)} = 1
+        \]
+        \item If $A_1, A_2, A_3, \hdots$ are disjoint, then 
+        \begin{align*}
+            P(A_1 \cup A_2 \cup A_3 \hdots | B) &= \frac{P((A_1 \cup A_2 \cup A_3 \hdots) \cap B)}{P(B)} \\
+            &= \frac{P((A_1 \cap B) \cup (A_2 \cap B) \cup (A_3 \cap B) \hdots)}{P(B)} &&\text{(by distributing the intersection)}\\
+            &= \frac{P(A_1 \cap B) + P(A_2 \cap B) + P(A_3 \cap B) + \hdots}{P(B)} &&\text{(by axiom 3 of probability)}\\
+            &= P(A_1 | B) + P(A_2 | B) + P(A_3| B) + \hdots
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+    In class, prof used a slightly different notation to prove countable additivity.
+    \begin{align*}
+        P_B \left( \bigcup_{i = 1}^n A_i \right) 
+        &= \frac{
+            P \left( B \cap \bigcup_{i = 1}^n A_i \right) 
+        }{P (B)} \\ 
+        &= \frac{
+            P \left( \bigcup_{i = 1}^n (B \cap A_i) \right) 
+        }{P(B)} \\
+        &= \frac{
+            \sum\limits_{i = 1}^{n}  P \left( B \cap A_i \right) 
+        }{P(B)} \\
+        &= \sum\limits_{i = 1}^{n}  P( A_i | B)
+    \end{align*}
+\end{remark}
+
+% \begin{example}
+%     [Rolling a die] Roll a fair six-sided die twice. What is the probability of getting at least a 3 given the sum is 6?  \\
+    
+%     Solution: The sample space is 
+%     \[
+%         \Omega = \{ 1, 2, \hdots 6 \}^2
+%     \]
+
+%     Define two events 
+%     \begin{align*}
+%         A &= \{  \text{at least one die shows 3} \}  \\
+%         B &= \{ \text{the sum is 6} \} 
+%     \end{align*}
+
+%     What is $P(A | B)$? \\
+
+%     The number of outcomes in $B \cap \Omega$ is 5
+%     \[
+%         B \cap \Omega = \{ (1, 5), (5, 1), (2, 4), (4, 2), (3, 3) \} 
+%     \]
+
+%     The number of outcomes in $A \cap B$ is 1
+%     \[
+%         A \cap B = \{ (3, 3) \}
+%     \]
+
+%     Therefore, 
+%     \[
+%         P(A | B) = \frac{1}{5}
+%     \]
+
+% \end{example}
+
+\subsection{Independence}
+
+\begin{example}[Motivating example: new information does not change the market] Define 
+    \begin{align*}
+        A &= \{ \text{Trump acquires Greenland by 2027} \} \\
+        B &= \{ \text{It's raining in Nuuk} \}
+    \end{align*}
+
+    Then it might make sense to say that observing $B$ does not provide more information about $A$, i.e.
+    \[
+        P (A | B) = P(A)
+    \]
+\end{example}
+
+\begin{definition}[Independence]
+    Events $A, B$ are \textbf{independent} if and only if
+    \[
+        P(A \cap B) = P(A) P(B)
+    \]
+
+    Equivalent 
+    \begin{align*}
+        P(A | B) &= \frac{P(A \cap B)}{P(B)} \\
+        &= \frac{P(A) P(B)}{P(B)} \\
+        &= P(A)
+    \end{align*}
+
+    Independence is sometimes denoted 
+    \[
+        A \cap B
+    \]
+\end{definition}
+
+\begin{remark} 
+    [Independence vs Disjointness] 
+    Two events are \textbf{disjoint} if $A \cap B = \emptyset$. \\
+
+    Two events are independent if $P(A \cap B) = P(A) P(B)$ or $P(A|B) = P(A)$ \\
+
+    If two events are disjoint (and each event has non-zero probability), knowing one event provides full information about the other. Therefore, disjoint events are \textbf{not} independent. 
+\end{remark}
+
+\begin{result}[Independence and complements] 
+    Suppose $A, B$ are independent events. Then the following pairs of events are also independent:
+    \begin{itemize}
+        \item $A^c$ and $B$
+        \item $A$ and $B^c$
+        \item $A^c$ and $B^c$
+    \end{itemize}
+\end{result}
+
+\subsection{Law of Total Probability}
+
+% \begin{example}[Motivating example: Trump and cases]
+%     Let 
+%     \begin{align*}
+%         A &= \{ \text{Trump acquires Greenland by 2027} \} 
+%     \end{align*}
+
+%     Break the future into two cases: 
+%     \begin{align*}
+%         B_1 &= \{ \text{Trump visits Nuuk} \} \\
+%         B_2 &= \{ \text{Trump does not visit Nuuk} \}
+%     \end{align*}
+
+%     Suppose we know $P(B_1), P(B_2)$. 
+%     \begin{itemize}
+%         \item If $B_1$ occurs, then $P(A)$ updates to $P(A |B_1)$
+%         \item If $B_2$ occurs, then $P(A)$ updates to $P(A |B_2)$
+%     \end{itemize} 
+    
+%     Then, the probability of $A$ is a weighted sum of the conditional probabilities, weighted by $P(B_1), P(B_2)$. 
+%     \[
+%         P(A) = P(A | B_1) P(B_1) + P(A |B_2) P(B_2)
+%     \]
+    
+% \end{example}
+
+
+\begin{definition}
+  [Partition] We say that a collection of nonempty sets $A_1, A_2, \hdots$ form a \textbf{partition} of $A$ if they are disjoint and their union is $A$.  \\
+  
+  That is, 
+    \begin{itemize}
+        \item pairwise disjoint: $A_i \cap A_j = \emptyset$ for all $i \neq j$
+        \item collectively exhaustive: $\bigcup\limits_{i}^{} A_i = A$
+        \item nonempty: $A_i \neq \emptyset$ for all $i$
+    \end{itemize}
+\end{definition}
+
+\begin{remark} If $A_1, A_2, \hdots$ parition $\Omega$, then any $\omega \in \Omega$ lives in exactly one of the $A_i$'s.
+\end{remark}
+
+
+\begin{theorem}[Law of Total Probability]
+    If $B_1, B_2, \hdots$ is a partition of the sample space $S$, then for any event $A$, we have 
+    \begin{align*}
+        P(A) &= \sum\limits_{i}^{} P(A \cap B_i) = \sum\limits_{i}^{} P(A | B_i) P(B_i)
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    Decompose $A$ into disjoint unions and apply axiom 3.
+    \begin{align*}
+        A &= \bigcup_{i = 1}^n \left( A \cap B_i \right) \text{ and union is disjoint} \\
+        P(A) &= P \left( \bigcup_{i = 1}^n \left( A \cap B_i \right) \right) \\
+        &= \sum\limits_{ i= 1}^{n}  P(A \cap B_i) \quad \text{(by axiom 3)} \\
+        &= \sum\limits_{ i= 1}^{n}  P(A | B_i) P(B_i)
+    \end{align*}
+
+\end{proof}
+
+
+
+
+\newpage

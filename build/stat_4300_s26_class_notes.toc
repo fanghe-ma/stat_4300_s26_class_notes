@@ -13,3 +13,7 @@
 \contentsline {subsubsection}{\numberline {1.3.1}Definition}{6}{subsubsection.1.3.1}%
 \contentsline {subsubsection}{\numberline {1.3.2}Properties of the indicator function}{6}{subsubsection.1.3.2}%
 \contentsline {subsubsection}{\numberline {1.3.3}Demonstrating the usefulness of indicators}{7}{subsubsection.1.3.3}%
+\contentsline {section}{\numberline {2}Class 2 - Conditional Probability and Independence}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Conditional Probability}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Independence}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Law of Total Probability}{9}{subsection.2.3}%

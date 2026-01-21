@@ -180,10 +180,10 @@
 % Uses the 'ptm' family (Nimbus Roman) under pdfLaTeX, which is Times-compatible.
 \newcommand{\TitleFont}{\fontfamily{ptm}\selectfont}
 
-\newtheoremstyle{mystyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{}
-\newtheoremstyle{cstyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{\thmnote{#3}}
+\newtheoremstyle{mystyle}{}{}{}{}{\bfseries}{.}{ }{}
+\newtheoremstyle{cstyle}{}{}{}{}{\bfseries}{.}{ }{\thmnote{#3}}
 \makeatletter
-\renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}{\normalfont\sffamily\bfseries\topsep6\p@\@plus6\p@\relax #1\@addpunct{.} }}{\popQED\endtrivlist\@endpefalse}
+\renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}{\normalfont\bfseries\topsep6\p@\@plus6\p@\relax #1\@addpunct{.} }}{\popQED\endtrivlist\@endpefalse}
 \makeatother
 \newcommand{\coolqed}[1]{\checkmark} %Defines the new QED symbol
 \renewcommand{\qedsymbol}{\coolqed{0.32}} %Implements the new QED symbol
@@ -227,9 +227,9 @@
 \newenvironment{talign*}{\let\displaystyle\textstyle\csname align*\endcsname}{\endalign}
 
 \usepackage[explicit]{titlesec}
-\titleformat{\section}{\fontsize{24}{30}\sffamily\bfseries}{\thesection}{20pt}{#1}
-\titleformat{\subsection}{\fontsize{16}{18}\sffamily\bfseries}{\thesubsection}{12pt}{#1}
-\titleformat{\subsubsection}{\fontsize{10}{12}\sffamily\large\bfseries}{\thesubsubsection}{8pt}{#1}
+\titleformat{\section}{\fontsize{22}{24}\bfseries}{\thesection}{12pt}{#1}
+\titleformat{\subsection}{\fontsize{16}{18}\bfseries}{\thesubsection}{12pt}{#1}
+\titleformat{\subsubsection}{\fontsize{10}{12}\large\bfseries}{\thesubsubsection}{8pt}{#1}
 % \titleformat{\section}{\fontsize{24}{30}\TitleFont\bfseries}{\thesection}{20pt}{#1}
 % \titleformat{\subsection}{\fontsize{16}{18}\TitleFont\bfseries}{\thesubsection}{12pt}{#1}
 % \titleformat{\subsubsection}{\fontsize{10}{12}\TitleFont\bfseries}{\thesubsubsection}{8pt}{#1}
