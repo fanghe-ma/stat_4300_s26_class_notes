@@ -246,3 +246,18 @@
 \setlength{\parindent}{0.2in}
 \setlength{\parskip}{0pt}
 \setlength{\columnseprule}{0pt}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+  \clearpage
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \begin{center}
+    {\LARGE\bfseries \@title \par}
+    \vspace{1cm}
+    {\large \@date \par}
+  \end{center}
+  \vspace*{\fill}
+  \clearpage
+}
+\makeatother
