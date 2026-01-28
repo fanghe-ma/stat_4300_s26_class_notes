@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.29)  21 JAN 2026 16:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.29)  28 JAN 2026 17:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1550,7 +1550,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--212
 
  []
 
-[5] [6] [7]) (./classes/class_2.tex [8]
+[5] [6] [7]) (./classes/class_2.tex
+Overfull \hbox (12.08809pt too wide) in paragraph at lines 1--1
+|[]\T1/lmr/bx/n/22 Class 2 - Con-di-tional Prob-a-bil-ity, In-de-pen-dence,
+ []
+
+[8]
 Underfull \hbox (badness 10000) in paragraph at lines 147--148
 
  []
@@ -1565,29 +1570,56 @@ Underfull \hbox (badness 10000) in paragraph at lines 192--193
 
  []
 
+[9]) (./classes/class_3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
 
-Package tcolorbox Warning: Discard zero height first box part due to break problems (possible loss of zero height content) on input line 222.
+ []
 
-[9] [10]) (build/stat_4300_s26_class_notes.aux)
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
+
+ []
+
+[12] [13]) (build/stat_4300_s26_class_notes.aux)
 Package rerunfilecheck Info: File `stat_4300_s26_class_notes.out' has not changed.
-(rerunfilecheck)             Checksum: FFE7F8D6ABF94D37EB7C23EC0ECFCD31;3531.
+(rerunfilecheck)             Checksum: 43C0CAD55859111A7BDA9F8FAA3F83A0;5479.
 Package logreq Info: Writing requests to 'stat_4300_s26_class_notes.run.xml'.
 \openout1 = `stat_4300_s26_class_notes.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 58681 strings out of 476025
- 1346328 string characters out of 5790017
- 2222614 words of memory out of 5000000
- 77963 multiletter control sequences out of 15000+600000
+ 58728 strings out of 476025
+ 1347082 string characters out of 5790017
+ 2224614 words of memory out of 5000000
+ 77990 multiletter control sequences out of 15000+600000
  598858 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,15n,102p,2086b,2070s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on build/stat_4300_s26_class_notes.pdf (10 pages, 271681 bytes).
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on build/stat_4300_s26_class_notes.pdf (13 pages, 313457 bytes).
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 271 compressed objects within 3 object streams
- 81 named destinations out of 1000 (max. 500000)
- 301 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 419 PDF objects out of 1000 (max. 8388607)
+ 338 compressed objects within 4 object streams
+ 98 named destinations out of 1000 (max. 500000)
+ 365 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,3 +1,274 @@
-\section{Class 3 - Law of total probability and Bayes Rule}
+\section{Class 3 - Bayes Rule and Counting}
+
+\subsection{Bayes Rule}
+
+\begin{theorem}
+    [Bayes Rule] For any two events $A, B$, where $P(A) \neq 0, P(B) \neq 0$, we have
+    \[
+        P(A|B) = \frac{P(B|A) P(A)}{P(B)}
+    \]
+\end{theorem}
+
+\begin{remark}
+\[
+\underbrace{P(A \mid B)}_{\text{posterior}}
+=
+\underbrace{\frac{P(B \mid A)}{P(B)}}_{\text{update function}}
+\;\underbrace{P(A)}_{\text{prior}}.
+\]
+\end{remark}
+
+\begin{proof}
+    \begin{align*}
+        P(A | B) &= \frac{P(A \cap B)}{P(B)} \\
+        &= \frac{P(B | A) P(A)}{P(B)}
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    [Biased coins] Three coins with head probabilities $(p_1, p_2, p_3) = (.9, .6, .3)$. Suppose we select a coin at random and observe $(H, H, H, T)$. \\
+
+    What is the probability that we chose coin $i$ given the data? 
+
+    \begin{align*}
+        P(i \text{ chosen} | D) &= \frac{P( D | i \text{ chosen })}{P(D)} \cdot P(i \text{ chosen})
+    \end{align*}
+
+    More concretely, say $i = 1$
+    \begin{align*}
+        P(D | 1 \text{ chosen}) &= P( \{ H, H, H, T \} | 1 \text{ chosen}) \\
+        &= P(H | 1 \text{ chosen})^3 \cdot P(T | 1 \text{ chosen}) \text{ by independence}\\
+        &= 0.9^3 \cdot 0.1
+    \end{align*}
+
+    From last week, we apply law of total probability to find $P(D)$ 
+    \begin{align*}
+        P(D) &= \sum\limits_{i \in \{ 1, 2, 3 \} }^{}  P(D | i \text{ chosen}) \cdot P(i \text{ chosen}) \\
+    \end{align*}
+
+    More generally, the probability that we chose coin $i$ given the data is
+    \begin{align*}
+        P(i \text{ chosen} | D) &= \frac{p_i^3 (1 - p_i)}{\sum\limits_{j = 1}^{3} p_j^3 (1 - p_j)} = \begin{cases}
+            0.56 & i = 1 \\
+            0.33 & i = 2 \\
+            0.11 & i = 3
+        \end{cases}
+    \end{align*}
+
+\end{example}
+
+\subsection{Counting}
+
+\subsubsection{Counting Principles}
+
+\begin{definition}[Counting Principle]
+Let $A_1, \hdots A_n$ be finite sets with $|A_i| = k_i$, and $(a_1, \hdots a_n) \in A_1 \times \hdots A_n$ , then 
+\[
+    |A_1 \times A_2 \times \hdots A_n| = |A_1| \cdot |A_2| \cdot \hdots \cdot |A_n| = \prod\limits_{i = 1}^{n} k_i
+\]
+\end{definition}
+
+\begin{example}[Phone PIN code]
+    Consider 4 digit PIN codes, $(a_1, a_2, a_3, a_4)$, then 
+    \[
+        \left| A_1 \right| = \left| A_2 \right| = \left| A_3 \right| = \left| A_4 \right| = 10
+    \]
+    Thus, by the counting principle, the total number of possible PIN codes is
+    \[
+        |A_1 \times A_2 \times A_3 \times A_4| = 10^4 = 10,000
+    \]
+    
+\end{example}
+
+\begin{remark}
+    Every $n$ element set is equivalent to $\{ 1, 2, \hdots n \} $.
+\end{remark}
+
+\subsubsection{Sampling Taxonomy - 4 kinds of sampling regimes}
+
+We want to count the number of ways to draw $k$ things from $n$-elements set, i.e. $S = \{ 1,2, \hdots n \} $. There are 4 scenarios.
+
+\begin{center}
+    \begin{tabular}{c | c  c} 
+        & Ordered & Unordered \\
+        \hline
+        With Replacement    & Sequences     & Multisets    \\
+        Without Replacement & Permutations  & Combinations \\ 
+    \end{tabular}
+\end{center}
+
+\subsubsection{Ordered, without replacement - Permutations}
+
+\begin{result}[Counting Permutations]
+    We want to count the number of ordered samples of size $k$ drawn without replacement from an $n$ element set. Formally, we want to count the size of the sample space
+\[
+    \Omega = \{ (a_1, \hdots a_k): a_i \neq a_j \text{ if } i \neq j \} 
+\]
+
+We call the number of permutations "$n$ permute $k$" and denote it by ${}_nP_k$.
+
+By counting principle, 
+\begin{align*}
+    {}_n P_k = \left| \Omega \right|  = n \cdot (n - 1) \cdot (n - 2) \cdots (n - k + 1) = \frac{n!}{(n - k)!} 
+\end{align*}
+
+\end{result}
+
+\begin{example}[Collision problem]
+    In a group of $n$ people, what is the probability $p_n$ that at least two have the same birthday? Assume birthdays are uniform over 365 days and independent. \\
+
+    Instead of counting the number of ways with at least 2, which would require us to consider the number of cases with exactly 2, exactly 3, etc., we use the \textbf{complement rule}. 
+
+    \begin{align*}
+        p_n &= 1 - P(\text{no collision}) \\
+        &= 1 - \frac{\text{number of ways to assign birthdays with no collision}}{\text{number ways to assign birthdays}}
+    \end{align*}
+
+    We can define 
+    \begin{align*}
+        \Omega &= \{ (a_1, \hdots a_n) \in \{ 1, \hdots 365 \}^n \}  \\
+        A &= \{ (a_1, \hdots a_n) \in \{ 1, \hdots 365 \}^n, a_i \neq a_j \text{ if } i \neq j \} = \{ \text{permutations of } \{ 1, \hdots 365 \} \}
+    \end{align*}
+
+    Then 
+    \begin{align*}
+        \left| \Omega \right| &= 365^n \\
+        \left| A \right| &= 365Pn = \frac{365!}{(365 - n)!}
+    \end{align*}
+
+    \begin{align*}
+        p_n &= 1 - P(\text{no collision}) \\
+        &= 1 - \frac{\text{number of ways to assign birthdays with no collision}}{\text{number ways to assign birthdays}} \\
+        &= 1 - \frac{365P }{365^n} \\
+        &= 1 - \frac{365!}{(365 - n)! 365^n} \\
+    \end{align*}
+
+    We can simplify this equation 
+    \begin{align*}
+        p_n &= 1 - \frac{365 \cdot 364 \hdots (365 -n + 1)}{365^n} \\
+        &= 1 - 1 \cdot \frac{365}{365} \hdots (365 - n + 1)/365 \\
+        &^= 1 - \prod_{i}^{n-1} \left( 1 - \frac{i}{365} \right) 
+    \end{align*}
+
+    Since $1 - x \leq e^{-x}$, we have 
+    \[
+        1 - \frac{i}{365} \leq e^{- \frac{i}{365}}
+    \]
+
+    Hence 
+    \begin{align*}
+        \prod_{i = 1}^{n-1} \left( 1 - \frac{i}{365} \right)  &\leq \prod_{i = 1}^{n-1} e^{ - \frac{i}{365}} \\
+        = e^{ - \sum\limits_{i = 0}^{n-1} \frac{i}{365}} \\
+        = e^{- \frac{n(n-1)}{2 \cdot 365}}
+    \end{align*}
+
+    Therefore 
+    \begin{align*}
+        p_n &= 1 - \prod_{i = 0}^{n-1} \left( 1 - \frac{i}{365} \right)  \geq 1 - e^{ \frac{-n (n-1)}{2 \cdot 365}}
+    \end{align*}
+
+    Hence, $p_n$ becomes significant when $n$ is on the order of $\sqrt{365} \approx 19$. \\
+
+    To see a collision among $m$ categories, we need about $\sqrt{m}$ samples.
+\end{example}
+
+\subsubsection{Unordered, without replacement - Combinations}
+
+\begin{remark}
+    Combinations are permutations modulo order.
+\end{remark}
+
+
+\begin{result}[Counting Combinations]
+    We want to count the number of unordered samples of size $k$ drawn without replacement from an $n$ element set. This is equivalent to counting the number of unordered $k$-subsets from $n$ elements.
+    
+    Formally, we want to count the size of the sample space
+    \[
+        \Omega = \{ 
+            \{ a_1, a_2 \hdots a_n \}  \subseteq \{ 1, 2, \hdots n \} 
+        \} 
+    \]
+
+    We call the number of combinations "$n$ choose $k$" and denote it by ${}_n C_k$ or $\binom{n}{k}$ \\
+    \[
+        {}_n C_k = \left| \Omega \right| = \binom{n}{k}
+    \]
+
+    For each unordered subset, we can generate $k!$ ordered sequences. Hence
+    \[
+        k! \left| \Omega \right|  = k!\ {}_n C_k = {}_nP_k
+    \]
+    Therefore 
+    \[
+        {}_n C_k = \left| \Omega \right| = \binom{n}{k}
+        = \frac{{}_nP_k}{k!} = \frac{n!}{k! (n - k)!}
+    \]
+\end{result}
+
+\begin{example}[Flipping coins]
+    Flip a coin 20 times. Each ordered sequence of $H/T$ is equally likely. Which outcome has more ways to happen?
+    \begin{itemize}
+        \item exactly 10 heads 
+        \item exactly 2 heads
+    \end{itemize} 
+
+    The number of outcomes are 
+    \begin{itemize}
+        \item exactly 10 heads: ${}_{20} C_{10} = \binom{20}{10} = 184,756$ ways
+        \item exactly 2 heads: ${}_{20} C_{2} = \binom{20}{2} = 190$ ways
+    \end{itemize} 
+\end{example}
+
+\subsubsection{Unordered, with replacement - Multisets}
+
+\begin{definition}[Multisets]
+    Fix $S = \{ 1, 2, \hdots n \} $. A \textbf{multiset} on $S$ is a function $m: S \to \mathbb{N}$ where $m(\sigma)$ is the multiplicity of $\sigma \in S$. A multiset of size $k$ is one such that 
+    \[
+        \sum\limits_{\sigma \in S}^{} m(\sigma) = k
+    \]
+\end{definition}
+
+
+\begin{result}[Counting Multisets]
+    We want to count the number of unordered samples of size $k$ drawn with replacement from an $n$ element set. This is equivalent to counting the number of multisets of size $k$ from $n$ elements. \\
+
+    The sample space is 
+    \[
+        \Omega = \{ m: S \to \mathbb{N},  \sum\limits_{\sigma \in S}^{} m(\sigma) = k \} 
+    \]
+
+    We call the number of multisets "$n$ multichoose $k$" and denote it by $ \left( \binom{n}{k} \right) $. \\
+
+    We count this using the \textbf{bijective argument}: Let $x_i = m(i)$ for $i \in \{ 1, 2, \hdots n \} $, then 
+    \[
+        x_1 + x_2 \hdots x_n = k \text{ where } (x_1, \hdots x_n) \in \{ 0, 1, 2, \hdots  \}^n = \mathbb{N}^n
+    \]
+
+    We build a bijection 
+    \[
+        \Phi \left( x_1, \hdots x_n \right) = 
+        \underbrace{* * \hdots *}_{x_1} | \underbrace{* * \hdots *}_{x_2} | \hdots | \underbrace{* * \hdots *}_{x_n}
+    \]
+
+    This is equivalent to arranging $k$ stars and $n - 1$ bars, which is a total of $k + n - 1$ symbols. We need to choose $n - 1$ positions for the bars, hence
+    \[
+        \left| \Omega \right| =  \left( \begin{pmatrix} 
+          n \\k  
+        \end{pmatrix}
+         \right)  = 
+        \binom{n + k - 1}{n - 1} = \binom{n + k - 1}{k}
+    \]
+\end{result}
+
+
+
+
+
+
+
+
+
+
+
 
 \newpage
