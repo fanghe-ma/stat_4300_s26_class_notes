@@ -16,8 +16,10 @@ counts the number of ordered sequences in $S^k$ in which element $i\in S$
 appears exactly $m_i$ times.
 \end{definition}
 
-\begin{example}
-    Let $\Omega = \{ 1, 2, \hdots 6 \}^{60} $, and each ordered outcome is equally likely. The most likely outcome is the one where each element appears exactly 10 times. The number of such outcomes is given by the multinomial coefficient
+\begin{example}[Most likely outcome of 60 dice rolls]
+    \textbf{Motivating question}: Roll a fair 6-sided die 60 times. Count the number of 1s, 2s, 3s, 4s, 5s, and 6s. What is the most likely unordered outcome? \\
+
+    Let $\Omega = \{ 1, 2, \hdots 6 \}^{60} $. Each ordered outcome is equally likely. The most likely unordered outcome is the one where each element appears exactly 10 times. The number of such outcomes is given by the multinomial coefficient
     \[
         \binom{60}{10, 10, 10, 10, 10, 10} = \frac{60!}{(10!)^6}
     \]
@@ -85,7 +87,7 @@ appears exactly $m_i$ times.
     \]
 \end{definition}
 
-\begin{example}
+\begin{example}[Sum of two dice rolls]
     Let $D_1, D_2 \in \{ 1, 2, \hdots 6 \} $ be outcomes of 2 dice rolls. Define 
     \[
         S:= D_1 + D_2 \in A = \{ 2, 3, \hdots 12 \} 
