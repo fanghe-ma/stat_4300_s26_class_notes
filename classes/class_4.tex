@@ -1,3 +1,199 @@
-\section{Class 4 - Counting I (Permutations and ordered sampling)}
+\section{Class 4 - Multinomial Coefficients and Discrete Random Variables}
+
+\subsection{Multinomial Coefficients}
+
+\begin{definition}[Multinomial coefficient]
+Let $S$ be a finite set with $|S|=n$.  
+For nonnegative integers $m_1,\dots,m_n$ satisfying
+\[
+\sum_{i=1}^n m_i = k,
+\]
+the \textbf{multinomial coefficient}
+\[
+\binom{k}{m_1,\dots,m_n} = \frac{k!}{m_1!\cdots m_n!}
+\]
+counts the number of ordered sequences in $S^k$ in which element $i\in S$
+appears exactly $m_i$ times.
+\end{definition}
+
+\begin{example}
+    Let $\Omega = \{ 1, 2, \hdots 6 \}^{60} $, and each ordered outcome is equally likely. The most likely outcome is the one where each element appears exactly 10 times. The number of such outcomes is given by the multinomial coefficient
+    \[
+        \binom{60}{10, 10, 10, 10, 10, 10} = \frac{60!}{(10!)^6}
+    \]
+
+    \textbf{Proof}:  Suppose two of the multiplicities differ by more than 1, i.e. $m_a \geq m_b + 2$ for some $a, b$. Then define
+    \[
+        m_a^{\prime} = m_a - 1, \quad m_b^{\prime} = m_b + 1
+    \]
+
+    We then compare the ratio of the two multinomial coefficients:
+    \[
+    \frac{
+        \binom{60}{ \hdots m_a^{\prime}, \hdots, m_b^{\prime}, \hdots}
+    }{
+        \binom{60}{ \hdots m_a, \hdots, m_b, \hdots}
+    } = \frac{
+        m_a
+    }{m_b + 1} > 1
+    \]
+
+    This means we can always increase the multinomial coefficient by balancing the multiplicities. Hence the maximum occurs when all multiplicities are within 1 apart.
+\end{example}
+
+\subsection{Discrete Random Variables}
+
+\subsubsection{Discrete Random Variables, PMF, CDF}
+
+
+\begin{definition}[Discrete random variables]
+    A \textbf{discrete random variable} is a function $X: \Omega \to A \subseteq  \mathbb{R}$ where $A$ is countable (i.e. there is a one-to-one mapping between $A$ and $\mathbb{N}$, $ \left| A \right|  \leq \left| \mathbb{N} \right| $).
+\end{definition}
+
+\begin{remark}
+    For discrete $X$, $\Omega$ can be arbitrarily complicated, but the range of $X$, $A$ needs to be countable.
+\end{remark}
+
+
+\begin{definition}[Probability mass function]
+    The \textbf{probability mass function} (pmf) of a discrete random variable $X$ is the function $p_X: \mathbb{R} \to [0, 1]$ defined by
+    \[
+        p_X(x) = P(X = x) = P( \{ \omega \in \Omega: X(\omega) = x \} )
+    \]
+\end{definition}
+
+\begin{definition}[Support]
+    The \textbf{support} of a discrete random variable $X$ is the set of values in $\mathbb{R}$ where the pmf is positive: 
+    \[
+        \text{supp}(X) = \{ x \in \mathbb{R} : p_X(x) > 0 \}
+    \]
+\end{definition}
+
+
+\begin{remark}
+    The pmf satisfies
+    \begin{itemize}
+        \item $p_X(x) \geq 0$ for all $x \in \mathbb{R}$
+        \item $\sum\limits_{x \in A}^{} p_X(x) = 1$, where $A$ is the range of $X$ 
+    \end{itemize} 
+\end{remark}
+
+\begin{definition}[Cumulative distribution function]
+    The \textbf{cumulative distribution function} (cdf) of a discrete random variable $X$ is the function $F_X: \mathbb{R} \to [0, 1]$ defined by
+    \[
+        F_X(t) = P(X \leq t) = \sum\limits_{a \leq t}^{} p_X(a)
+    \]
+\end{definition}
+
+\begin{example}
+    Let $D_1, D_2 \in \{ 1, 2, \hdots 6 \} $ be outcomes of 2 dice rolls. Define 
+    \[
+        S:= D_1 + D_2 \in A = \{ 2, 3, \hdots 12 \} 
+    \]
+    The sample space is 
+    \[
+        \Omega = \{ 1, 2, \hdots 6  \}^2
+    \]
+
+    The number of outcomes corresponding to sum $s$ is 
+    \[
+        N(s) = \begin{cases}
+            s - 1 & \text{ if } 2 \leq s \leq 7 \\
+            13 - s & \text{ if } 8 \leq s \leq 12
+        \end{cases}
+    \]
+    The probability mass function of $S$ is
+    \[
+        p_S(s) = \frac{N(s)}{ \left| \Omega \right| } = \frac{N(s)}{36}
+    \]
+    
+\end{example}
+
+\subsubsection{Expectations and Variance}
+
+\begin{definition}[Expectation of discrete random variable]
+    If $X$ is a discrete random variable with pmf $p_X$, and $\sum\limits_{x \in A}^{}  \left| x \right| p_X(x) < \infty$, then the \textbf{expectation} of $X$ is defined as 
+    \[
+        \mathbb{E}\left[ X\right]  = \sum\limits_{ x \in \operatorname{supp}(X)}^{} x \cdot p_X(x)
+    \]
+
+    If $g: \mathbb{R} \to \mathbb{R}$, then the \textbf{expectation} of $g(X)$ is defined as
+    \[
+        \mathbb{E}\left[ g(X)\right]  = \sum\limits_{ x \in \operatorname{supp}(X)}^{} g(x) \cdot p_X(x)
+    \]
+\end{definition}
+
+\begin{definition}[Variance]
+    Given a random variable $X$ with finite expectation, the \textbf{variance} of $X$ is defined as
+    \[
+        \operatorname{Var}(X) = \mathbb{E}\left[ (X - \mathbb{E}\left[ X\right] )^2 \right]  = \mathbb{E}\left[ X^2 \right]  - ( \mathbb{E}\left[ X\right] )^2
+    \]
+\end{definition}
+
+
+\subsubsection{Indicator random variables}
+
+\begin{definition}[Indicator random variables] For an event $A \subseteq \Omega$, the \textbf{indicator function} is a discrete random variable $\bm{1}_A : \Omega \to \{ 0, 1 \} $ defined by 
+    \[
+        \bm{1}_A(\omega) = \begin{cases}
+            1 & \text{ if } \omega \in A \\
+            0 & \text{ if } \omega \notin A
+        \end{cases}
+    \]
+\end{definition}
+
+\begin{result}[Expectation of indicator r.v.]
+    The expectation of an indicator random variable is the probability of the corresponding event:
+    \[
+        \mathbb{E}\left[ \bm{1}_A \right] = P(A)
+    \]
+\end{result}
+
+\begin{proof}
+    By definition of expectation 
+    \begin{align*}
+        \mathbb{E}\left[ \bm{1}_A \right] &= 1 \cdot P( \bm{1}_A = 1) + 0 \cdot P( \bm{1}_A = 0) \\
+        &= P(A)
+    \end{align*}
+\end{proof}
+
+\begin{theorem}[Linearity of Expectation]
+    Let $X, Y$ be discrete random variables, and $a, b$ be constants, then 
+    \[
+        \mathbb{E}\left[ a X + bY \right]  = a \mathbb{E}\left[ X\right]  + b \mathbb{E}\left[ Y\right] 
+    \]
+\end{theorem}
+
+\begin{remark}
+    In general, $\mathbb{E}\left[ g(X)\right]  \neq g( \mathbb{E}\left[ X\right] )$. This only holds if $g$ is linear.
+\end{remark}
+
+\begin{theorem}[Law of total probability] 
+    Let $A_1, \hdots A_n$ be a partition of $\Omega$, define a discrete random variable $I : \Omega \to \{ 1, 2, \hdots n \}$  by 
+    \[
+        I(w) = i \text{ if } w \in A_i
+    \]
+
+    Then 
+    \[
+        P(I = i) = P(A_i)
+    \]
+
+    Define $g(I): P(B | I = i)$. Then the law of total probability can be stated as 
+    \[
+        P(B) = \sum\limits_{i = 1}^{n} P(B | A_i) P(A_i) = \mathbb{E}\left[ P(B | I)\right] 
+    \]
+    
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
 
 \newpage

@@ -26,3 +26,9 @@
 \contentsline {subsubsection}{\numberline {3.2.4}Unordered, without replacement - Combinations}{12}{subsubsection.3.2.4}%
 \contentsline {subsubsection}{\numberline {3.2.5}Unordered, with replacement - Multisets}{12}{subsubsection.3.2.5}%
 \contentsline {subsubsection}{\numberline {3.2.6}Summary}{13}{subsubsection.3.2.6}%
+\contentsline {section}{\numberline {4}Class 4 - Multinomial Coefficients and Discrete Random Variables}{14}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Multinomial Coefficients}{14}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Discrete Random Variables}{14}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Discrete Random Variables, PMF, CDF}{14}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Expectations and Variance}{15}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Indicator random variables}{15}{subsubsection.4.2.3}%
