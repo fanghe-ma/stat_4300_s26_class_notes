@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex build/stat_4300_s26_class_notes"] 1770069358 "build/stat_4300_s26_class_notes.aux" "build/stat_4300_s26_class_notes.bbl" "build/stat_4300_s26_class_notes" 1770073687 0
+["bibtex build/stat_4300_s26_class_notes"] 1770240652 "build/stat_4300_s26_class_notes.aux" "build/stat_4300_s26_class_notes.bbl" "build/stat_4300_s26_class_notes" 1770241498 0
   "./bibliography.bib" 1761936253 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/biblatex/biblatex.bst" 1678141846 65484 b7949c47a88ed6dca66ebc7a04577312 ""
-  "build/stat_4300_s26_class_notes-blx.bib" 1770073686 342 5ba7332ec7ecc2dc9c6b1bd96e3d9aad "pdflatex"
-  "build/stat_4300_s26_class_notes.aux" 1770073686 5646 21355eac207c254b4191b21531be659c "pdflatex"
+  "build/stat_4300_s26_class_notes-blx.bib" 1770241498 342 5ba7332ec7ecc2dc9c6b1bd96e3d9aad "pdflatex"
+  "build/stat_4300_s26_class_notes.aux" 1770241498 6341 d7a689d02e93e7dd161eddf10bd3e17e "pdflatex"
   (generated)
   "build/stat_4300_s26_class_notes.bbl"
   "build/stat_4300_s26_class_notes.blg"
   (rewritten before read)
-["pdflatex"] 1770073684 "/Users/fanghema/Desktop/aaSTAT-4300 with Prof Bou-Rabee/STAT_4300_s26_class_notes/stat_4300_s26_class_notes.tex" "stat_4300_s26_class_notes.pdf" "stat_4300_s26_class_notes" 1770073687 0
-  "/Users/fanghema/Desktop/aaSTAT-4300 with Prof Bou-Rabee/STAT_4300_s26_class_notes/stat_4300_s26_class_notes.tex" 1770064345 1785 2407e51b27dc2511c0daa53ce78d5143 ""
+["pdflatex"] 1770241496 "/Users/fanghema/Desktop/aaSTAT-4300 with Prof Bou-Rabee/STAT_4300_s26_class_notes/stat_4300_s26_class_notes.tex" "stat_4300_s26_class_notes.pdf" "stat_4300_s26_class_notes" 1770241498 0
+  "/Users/fanghema/Desktop/aaSTAT-4300 with Prof Bou-Rabee/STAT_4300_s26_class_notes/stat_4300_s26_class_notes.tex" 1770237090 1813 96084efbd343c9210eaf1c5016f8e23a ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -411,16 +411,17 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1693360566 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1693360557 7883453 7512e057c6808cc4ab57b2931450f837 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "build/stat_4300_s26_class_notes.aux" 1770073686 5646 21355eac207c254b4191b21531be659c "pdflatex"
-  "build/stat_4300_s26_class_notes.bbl" 1770069358 512 242e9db92557ac81f6b30ce4f9334513 "bibtex build/stat_4300_s26_class_notes"
-  "build/stat_4300_s26_class_notes.out" 1770073686 6998 f4c26f3678e44cfede3e9a2f90638f34 "pdflatex"
-  "build/stat_4300_s26_class_notes.run.xml" 1770073686 2709 cdd1e77cd1c148e9fbb81f86418b06d2 "pdflatex"
-  "build/stat_4300_s26_class_notes.toc" 1770073686 3309 e8941f903f378f8a6b63a8eb0fecb2e7 "pdflatex"
+  "build/stat_4300_s26_class_notes.aux" 1770241498 6341 d7a689d02e93e7dd161eddf10bd3e17e "pdflatex"
+  "build/stat_4300_s26_class_notes.bbl" 1770240652 512 242e9db92557ac81f6b30ce4f9334513 "bibtex build/stat_4300_s26_class_notes"
+  "build/stat_4300_s26_class_notes.out" 1770241498 8144 5a1c3483806c52dc8b059ffe43d0d45c "pdflatex"
+  "build/stat_4300_s26_class_notes.run.xml" 1770241498 2709 cdd1e77cd1c148e9fbb81f86418b06d2 "pdflatex"
+  "build/stat_4300_s26_class_notes.toc" 1770241498 3799 4da545bc297b82689b295fab622137e8 "pdflatex"
   "classes/class_1.tex" 1769633369 12847 ce8742db1d6ecc9e72f3534c250ce374 ""
   "classes/class_2.tex" 1769633360 7624 6b1b948261813e0c8daf114c59a6c48f ""
   "classes/class_3.tex" 1770064541 9802 0addf2768f41b1a31c72e291ee374209 ""
-  "classes/class_4.tex" 1770073684 6607 0765c995c33fafddc1b2857c554783be ""
-  "stat_4300_s26_class_notes.tex" 1770064345 1785 2407e51b27dc2511c0daa53ce78d5143 ""
+  "classes/class_4.tex" 1770073773 6577 a67a0aa8c2032d6c6ef8163d6dae232b ""
+  "classes/class_5.tex" 1770241495 10927 0feab76518c1d305d3cb30042df05709 ""
+  "stat_4300_s26_class_notes.tex" 1770237090 1813 96084efbd343c9210eaf1c5016f8e23a ""
   "style.tex" 1769643886 12216 d62627a6bd4bbccaa6675c7a5897f3c7 ""
   (generated)
   "build/stat_4300_s26_class_notes-blx.bib"
