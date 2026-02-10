@@ -1,0 +1,151 @@
+
+\appendix
+\section{Table of Common Distributions}
+
+\subsection{Discrete Distributions}
+
+\begin{center}
+\renewcommand{\arraystretch}{2.2}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{l c c c c c}
+\toprule
+\textbf{Distribution} & \textbf{Parameters} & \textbf{PMF} $P(X = k)$ & \textbf{CDF} $F(k)$ & $\E[X]$ & $\operatorname{Var}(X)$ \\
+\midrule
+
+Discrete Uniform
+& $a, b \in \Z$, $a \leq b$
+& $\dfrac{1}{b - a + 1}$,\; $k \in \{a, \ldots, b\}$
+& $\dfrac{k - a + 1}{b - a + 1}$
+& $\dfrac{a + b}{2}$
+& $\dfrac{(b - a)(b - a + 2)}{12}$
+\\
+
+Bernoulli
+& $p \in [0,1]$
+& $p^k (1-p)^{1-k}$,\; $k \in \{0, 1\}$
+& $\begin{cases} 1 - p & k = 0 \\ 1 & k = 1 \end{cases}$
+& $p$
+& $p(1-p)$
+\\
+
+Binomial
+& $n \in \N$, $p \in [0,1]$
+& $\dbinom{n}{k} p^k (1-p)^{n-k}$,\; $k \in \{0, \ldots, n\}$
+& $\displaystyle\sum_{i=0}^{k} \dbinom{n}{i} p^i (1-p)^{n-i}$
+& $np$
+& $np(1-p)$
+\\
+
+Geometric
+& $p \in (0,1]$
+& $(1-p)^{k-1} p$,\; $k \in \{1, 2, \ldots\}$
+& $1 - (1-p)^{ k }$
+& $\dfrac{1}{p}$
+& $\dfrac{1-p}{p^2}$
+\\
+
+% Negative Binomial
+% & $r \in \N$, $p \in (0,1]$
+% & $\dbinom{k-1}{r-1} p^r (1-p)^{k-r}$,\; $k \in \{r, r+1, \ldots\}$
+% & No closed form
+% & $\dfrac{r}{p}$
+% & $\dfrac{r(1-p)}{p^2}$
+% \\
+
+% Poisson
+% & $\lambda > 0$
+% & $\dfrac{\lambda^k e^{-\lambda}}{k!}$,\; $k \in \{0, 1, 2, \ldots\}$
+% & $e^{-\lambda} \displaystyle\sum_{i=0}^{\lfloor k \rfloor} \dfrac{\lambda^i}{i!}$
+% & $\lambda$
+% & $\lambda$
+% \\
+
+% Hypergeometric
+% & $N, K, n \in \N$
+% & $\dfrac{\dbinom{K}{k}\dbinom{N-K}{n-k}}{\dbinom{N}{n}}$
+% & No closed form
+% & $\dfrac{nK}{N}$
+% & $\dfrac{nK(N-K)(N-n)}{N^2(N-1)}$
+% \\
+
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+
+% \subsection{Continuous Distributions}
+
+% \begin{center}
+% \renewcommand{\arraystretch}{2.2}
+% \begin{adjustbox}{max width=\textwidth}
+% \begin{tabular}{l c c c c c}
+% \toprule
+% \textbf{Distribution} & \textbf{Parameters} & \textbf{PDF} $f(x)$ & \textbf{CDF} $F(x)$ & $\E[X]$ & $\operatorname{Var}(X)$ \\
+% \midrule
+
+% Continuous Uniform
+% & $a < b$
+% & $\dfrac{1}{b-a}$,\; $x \in [a, b]$
+% & $\dfrac{x - a}{b - a}$
+% & $\dfrac{a+b}{2}$
+% & $\dfrac{(b-a)^2}{12}$
+% \\
+
+% Exponential
+% & $\lambda > 0$
+% & $\lambda e^{-\lambda x}$,\; $x \geq 0$
+% & $1 - e^{-\lambda x}$
+% & $\dfrac{1}{\lambda}$
+% & $\dfrac{1}{\lambda^2}$
+% \\
+
+% Normal (Gaussian)
+% & $\mu \in \R$, $\sigma^2 > 0$
+% & $\dfrac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$,\; $x \in \R$
+% & $\Phi\!\left(\dfrac{x - \mu}{\sigma}\right)$
+% & $\mu$
+% & $\sigma^2$
+% \\
+
+% Gamma
+% & $\alpha > 0$, $\beta > 0$
+% & $\dfrac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\beta x}$,\; $x > 0$
+% & No closed form
+% & $\dfrac{\alpha}{\beta}$
+% & $\dfrac{\alpha}{\beta^2}$
+% \\
+
+% Beta
+% & $\alpha > 0$, $\beta > 0$
+% & $\dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$,\; $x \in (0,1)$
+% & No closed form
+% & $\dfrac{\alpha}{\alpha+\beta}$
+% & $\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$
+% \\
+
+% Chi-Squared
+% & $k \in \N$
+% & $\dfrac{x^{k/2-1} e^{-x/2}}{2^{k/2}\,\Gamma(k/2)}$,\; $x > 0$
+% & No closed form
+% & $k$
+% & $2k$
+% \\
+
+% \bottomrule
+% \end{tabular}
+% \end{adjustbox}
+% \end{center}
+
+% \begin{remark}
+%     In the table above:
+%     \begin{itemize}
+%         \item $\Phi(z) = \displaystyle\int_{-\infty}^{z} \frac{1}{\sqrt{2\pi}} e^{-t^2/2}\, dt$ is the standard normal CDF.
+%         \item $\Gamma(\alpha) = \displaystyle\int_0^\infty t^{\alpha-1} e^{-t}\, dt$ is the gamma function. For positive integers, $\Gamma(n) = (n-1)!$
+%         \item $B(\alpha, \beta) = \dfrac{\Gamma(\alpha)\,\Gamma(\beta)}{\Gamma(\alpha + \beta)}$ is the beta function.
+%         \item The chi-squared distribution with $k$ degrees of freedom is a special case of the gamma distribution with $\alpha = k/2$ and $\beta = 1/2$.
+%         \item The exponential distribution with parameter $\lambda$ is a special case of the gamma distribution with $\alpha = 1$ and $\beta = \lambda$.
+%     \end{itemize}
+% \end{remark}
+
+% \newpage

@@ -256,10 +256,11 @@ Chebyshev's allows us to bound the probability that a random variable deviates b
     \]
 \end{remark}
 
-\begin{remark}[Concentration of binomial]
+\begin{remark}[Concentration of binomial] 
+
     Let $S_n \sim \operatorname{Binom}(n, p) $
 
-    \textbf{Intuition}: For a binomial \textit{most probability mass lies near the center}. \\
+    \textbf{Intuition}: For a binomial, \textit{most probability mass lies near the center}.
 
     When $p = \frac{1}{2}$
     
@@ -302,7 +303,14 @@ Chebyshev's allows us to bound the probability that a random variable deviates b
     \[ 
     P \left( \left| S_n - \frac{n}{2} \right|  \geq 5 \sqrt{n} \right) \leq \frac{1}{100}
     \]
-    \textit{For symmetric binomial, we have less than 1\% chance of seeing a deviation of more than $5 \sqrt{n}$}.
+    \textit{For symmetric binomial, we have less than 1\% chance of seeing a deviation of more than $5 \sqrt{n}$}. \\
+
+    Take $t = 3 \sigma, \sigma = \sqrt{Var(S_n)}$. 
+    \begin{align*}
+        P \left(  \left| S_n - np \right|  \geq 3 \sigma \right)  &\leq \frac{Var(S_n)}{9 \sigma^2}= \frac{1}{9} \\
+        P \left(  \left| S_n - np \right|  \leq 3 \sigma \right)  &\geq 1 - \frac{1}{9} \approx 88\%
+    \end{align*}
+    \textit{For symmetric binomial, we have 88\% chance of observing a value within 3 standard deviations of its mean.}
 \end{remark}
 
 

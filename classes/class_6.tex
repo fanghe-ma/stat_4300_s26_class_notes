@@ -1,3 +1,235 @@
-\section{Class 6 - Discrete Random Variables, PMFs, Expectation and Variance}
+\section{Class 6 - Tail Sums, Discrete Waiting Times and Geometric Random Variables}
+
+\subsection{Tail Sum Formula}
+The tail sum formula is a useful result for calculating moments of random variables. Here we introduce the discrete case.
+\begin{result}[Tail Sum]
+    Let $X$ be a nonnegative, integer valued random variable, $X: \Omega \to \{ 0, 1, 2, \hdots \} $. Then 
+    \[
+        \mathbb{E}\left[ X\right]  = \sum\limits_{k = 0}^{\infty} P(X > k)
+    \]
+\end{result}
+
+\begin{proof}
+    We decompose $X$ as a sum of an infinite sequence of indicator random variables 
+    \[
+    X = \bm{1}\{ X > 0 \}  + \bm{1} \{  X > 1 \}  + \textbf{1} \{ X > 2 \} \hdots
+    \]
+    Taking the expectations of both sides and by linearity 
+    \[
+        \mathbb{E}\left[ X\right]  = P (X > 0)  + P(X > 1) + P(X > 2) + \hdots
+    \]
+    
+\end{proof}
+
+
+\subsection{Geometric Random Variables}
+
+
+\begin{definition}
+    [Geometric Random Variable]: A random variable $X$ is said to be a \textbf{geometric} random variable with parameter $p$, denoted $X \sim \operatorname{Geom}(p)$ if its pmf is given by 
+    \[
+        P_X(k) = (1-p)^{k-1}p \text{ for } k \in \{ 1, 2, 3, \hdots \} 
+    \]
+
+    The survival function of a geometric random variable is sometimes denoted as 
+    \[
+        S(n) = P(T > n)  = 1 - F_X(n), \text{ for } n \geq 0
+    \]
+\end{definition}
+
+\begin{remark}To see that the geometric pmf is a valid pdf, 
+    \begin{align*}
+        \sum\limits_{k = 1}^{\infty}  P(T = k) &= p \sum\limits_{k = 1}^{\infty}  (1 - p)^{k-1} \\
+        &= p \sum\limits_{k = 0}^{\infty}  (1-p)^k \\
+        &=  p \cdot \frac{1}{1 - (1 - p)} \\
+        &= \frac{p}{p} \\
+        &= 1
+    \end{align*}
+\end{remark}
+
+\begin{example}[Polymarket Waiting Time]
+    Consider a polymarket contract: \textit{$X$ happens by date $D$}. \\
+
+    We want to find the price of the contract, $P \left( \textit{$X$ happens by date $D$} \right)$. \\
+
+    Define the indicator 
+    \[
+        X_t = \bm{1}\{\text{event happens on day } t\}
+    \]
+    Assume 
+    \[
+        X_t \sim Ber(p)
+    \]
+    for fixed $p$, and $X_1, X_2, \hdots$ independent.  \\
+
+    The waiting time is $T$, where 
+    \[
+        T := \min \{ t \geq 0, X_t = 1 \} 
+    \]
+
+    The desired probability is 
+    \begin{align*}
+        F_T(D) &= P(T \leq D) = 1 - \underbrace{P( T > D)}_{\text{survival function}} \\
+    \end{align*}
+
+    To find an expression for the surival function, 
+    \begin{align*}
+        \{ T > D \} &= \{ X_1 = 0, X_2 = 0, \hdots X_D = 0 \}  \\
+        &= \bigcap_{i = 1}^D \{ X_i = 0 \} \\
+        P \left( T > D \right) &= P \left( \bigcap_{i = 1}^D X_i = 0 \right)  \\
+        &= \prod_{i = 1}^D P(X_i = 0) \text{ by independence }\\
+        &= (1 - p)^D
+    \end{align*}
+\end{example}
+
+\begin{theorem}[Memorylessness of geometric random variables]
+    Let $m, n \in \mathbb{N}$, and $T \sim \operatorname{Geom}(p)$
+    \[P(T > m + n | T > m) = P (T > n)
+    \]
+\end{theorem}
+
+\begin{proof}
+    \begin{align*}
+        P(T > m + n | T > m) &= \frac{P(T > m + n, T > m)}{P(T > m)} \\
+        &= \frac{P \left( T > m + n \right) }{P(T > m)} \\
+        &= \frac{( 1- p)^{m + n}}{(1-p)^m} \\
+        &= (1 - p)^n
+    \end{align*}
+\end{proof}
+
+\begin{theorem}[Memorylessness implies geometric]
+    Suppose $T$ is a positive integer valued random variable that takes as its support $\operatorname{supp}(T) = \{ 1, 2, \hdots \}  $, and 
+    \[
+        P \left( T > m + n | T > n \right) = P(T > n)
+    \]
+    for all $m, n \in \mathbb{N}$. \\
+
+    Then $T \sim \operatorname{Geom}(p)$ for some $p \in (0, 1]$
+    
+\end{theorem}
+
+\begin{proof}
+    Since $T \geq 1$, $S(0) = P(T > 0) = 1$. \\
+
+    By memorylessness
+    \[P (T > m + 1 | T > m) = P(T > 1)
+    \]
+
+    Define 
+    \[q = P(T > 1) = 1-p
+    \]
+
+    Hence 
+    \[P (T > m + 1 | T > m) = P(T > 1) = \frac{P(T > m + 1)}{P(T > m)} = \frac{S(m + 1)}{S(m)} = q
+    \]
+
+    For $m \geq 0$, we have the recurrence relation $S(m+1) = S(m) = q$, and $S(0) = 1$. Solving the recurrence relation,
+    \[
+        S(m) = q^m = (1-p)^m
+    \]
+\end{proof}
+
+
+\begin{result}[Moments of geometric random variables]
+    Let $T \sim \operatorname{Geom}(p)$ \\
+
+    The expectation is 
+    \begin{align*}
+        \mathbb{E}\left[T \right]
+        &= \frac{1}{p}
+    \end{align*}
+
+    The second moment is 
+    \begin{align*}
+        \mathbb{E}\left[T^2 \right]
+        &= \frac{2(1-p)}{p^2} + \frac{1}{p}
+    \end{align*}
+
+    The variance is 
+    \begin{align*}
+        Var(T) &= \frac{1-p}{p^2}
+    \end{align*}
+\end{result}
+
+\begin{remark}
+    Recall the geometric series formula, for $-1 < r < 1$,
+    \[
+    \sum\limits_{i = 0}^{\infty}  a r^i = \frac{a}{1 - r}
+    \]
+\end{remark}
+
+\begin{remark}
+    Calculating the expectation and variance requires us to compute 
+    \[
+        \mathbb{E}\left[ T\right] = \sum\limits_{k = 1}^{\infty}  k p(1-p)^{k-1}
+    \]
+    \[
+        \mathbb{E}\left[ T^2\right] = \sum\limits_{k = 1}^{\infty}  k^2 p(1-p)^{k-1}
+    \]
+
+    This computation involves exchanging the order of a summation and a derivative, which is only justified subject to certain technical conditions that are beyond the scope of this class.  \\
+    
+    Instead of dealing with the exchange of the summation and the limit, Prof Bou-Rabee discussed an alternate method in class involving the use of the tail-sum formula and indicators. As it turns out, we have all the tools required to compute the expectation and variance. 
+\end{remark}
+
+\begin{proof}
+    We can calculate the expectation by applying the tail sum formula. 
+    \begin{align*}
+        \mathbb{E}\left[T \right] &= \sum\limits_{k = 0}^{\infty}  P(T > k) \\
+        &= \sum\limits_{k = 0}^{\infty} {(1 - p)}^{k} \\
+        &= \frac{1}{1- (1-p)} \\
+        &= \frac{1}{p}
+    \end{align*}
+
+    To find $\mathbb{E}\left[T^2 \right] $, we begin by expressing $T^2$ as a finite sum 
+    \begin{align*}
+    &\sum\limits_{k = 0}^{T-1} (2 k + 1) \\
+    = & 2 \sum\limits_{k = 0}^{T - 1} k + \sum\limits_{k = 0 }^{T - 1}  1 \\
+    = & 2 \frac{(T -1)T}{2} + T \\
+    = & (T-1)T + T \\
+    = & T^2
+    \end{align*}
+
+    Then we express $T^2$ using an infinite sum and indicators. 
+    \begin{align*}
+        T^2 &= \sum\limits_{k = 0}^{T-1}  (2 k + 1) \\
+        &= \sum\limits_{k = 0}^{\infty}  (2 k + 1) \textbf{1} \{ k > T \} \\
+        &= \sum\limits_{k = 0}^{\infty}  (2 k + 1) \textbf{1} \{ T > k \}
+    \end{align*}
+
+    To see the second equality, think of this step as \textit{filtering} for only the terms in the summation where $k \leq T - 1 \iff k < T$. \\
+
+    We take expectations on both sides and apply linearity 
+    \begin{align*}
+        \mathbb{E}\left[  T^2 \right]
+        &= \mathbb{E}\left[  \sum\limits_{k = 0}^{\infty}  (2 k + 1) \textbf{1} \{ T > k \}\right] \\
+        &= \sum\limits_{k = 0}^{\infty} (2k+1) \mathbb{E}\left[ \textbf{1} [ T > k] \right] \text{ by linearity} \\
+        &= \sum\limits_{k = 0}^{\infty} (2k+1) P ( T > k)  \text{ by expectation of indicators}\\
+        &= \sum\limits_{k = 0}^{\infty} (2k+1) (1-p)^k  \text{ by survival function of geometric r.v.} \\
+        &= \sum\limits_{k = 0}^{\infty} 2k(1-p)^k  + \sum\limits_{k = 0}^{\infty} (1-p)^k  \\
+        &= \frac{2(1-p)}{p}\sum\limits_{k = 0}^{\infty} kp(1-p)^{k-1}  + \sum\limits_{k = 0}^{\infty} (1-p)^k \\
+        &= \frac{2(1-p)}{p}\sum\limits_{k = 1}^{\infty} kp(1-p)^{k-1}  + \sum\limits_{k = 0}^{\infty} (1-p)^k \\
+        &= \frac{2(1-p)}{p} \mathbb{E}\left[ T\right]   + \sum\limits_{k = 0}^{\infty} (1-p)^k \\
+        &= \frac{2(1-p)}{p^2} + \frac{1}{p} \\
+        &= \frac{2 - 2p + p}{p^2} \\
+        &= \frac{2 - p}{p^2}
+    \end{align*}
+
+    Now we can find variance
+    \begin{align*}
+        Var(T) &= \mathbb{E}\left[ T^2\right]  - \mathbb{E}\left[T^2 \right]  \\
+        &= \frac{2 - p}{p^2} - \frac{1}{p^2} \\
+        &= \frac{1-p}{p^2}
+    \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
 
 \newpage
