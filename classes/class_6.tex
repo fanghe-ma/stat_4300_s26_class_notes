@@ -31,10 +31,6 @@ The tail sum formula is a useful result for calculating moments of random variab
         P_X(k) = (1-p)^{k-1}p \text{ for } k \in \{ 1, 2, 3, \hdots \} 
     \]
 
-    The survival function of a geometric random variable is sometimes denoted as 
-    \[
-        S(n) = P(T > n)  = 1 - F_X(n), \text{ for } n \geq 0
-    \]
 \end{definition}
 
 \begin{remark}To see that the geometric pmf is a valid pdf, 
@@ -46,6 +42,26 @@ The tail sum formula is a useful result for calculating moments of random variab
         &= 1
     \end{align*}
 \end{remark}
+
+\begin{result}[Geometric survival function]
+    The survival function of a geometric random variable $T \sim \operatorname{Geom} (p)$ is sometimes denoted as 
+    \[
+        S(n) = P(T > n)  = 1 - F_X(n) = (1-p)^n \text{ for } n \geq 0
+    \] 
+\end{result}
+
+\begin{proof}
+    To find an expression for the surival function, 
+    \begin{align*}
+        \{ T > n \} &= \{ X_1 = 0, X_2 = 0, \hdots X_n = 0 \}  \\
+        &= \bigcap_{i = 1}^n \{ X_i = 0 \} \\
+        P \left( T > n \right) &= P \left( \bigcap_{i = 1}^n X_i = 0 \right)  \\
+        &= \prod_{i = 1}^n P(X_i = 0) \text{ by independence }\\
+        &= (1 - p)^n
+    \end{align*}
+\end{proof}
+
+
 
 \begin{example}[Polymarket Waiting Time]
     Consider a polymarket contract: \textit{$X$ happens by date $D$}. \\
@@ -72,14 +88,6 @@ The tail sum formula is a useful result for calculating moments of random variab
         F_T(D) &= P(T \leq D) = 1 - \underbrace{P( T > D)}_{\text{survival function}} \\
     \end{align*}
 
-    To find an expression for the surival function, 
-    \begin{align*}
-        \{ T > D \} &= \{ X_1 = 0, X_2 = 0, \hdots X_D = 0 \}  \\
-        &= \bigcap_{i = 1}^D \{ X_i = 0 \} \\
-        P \left( T > D \right) &= P \left( \bigcap_{i = 1}^D X_i = 0 \right)  \\
-        &= \prod_{i = 1}^D P(X_i = 0) \text{ by independence }\\
-        &= (1 - p)^D
-    \end{align*}
 \end{example}
 
 \begin{theorem}[Memorylessness of geometric random variables]
