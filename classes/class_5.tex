@@ -65,7 +65,7 @@ Chebyshev's allows us to bound the probability that a random variable deviates b
     \]
 \end{theorem}
 
-\subsection{Bernoulli Random Variable}
+\subsection{Bernoulli Random Variables}
 
 \begin{remark}
     For random variable $X$, we sometimes use the following short hand 
@@ -139,7 +139,7 @@ Chebyshev's allows us to bound the probability that a random variable deviates b
 \end{center}
 \end{remark}
 
-\subsection{Binomial Random Variable}
+\subsection{Binomial Random Variables}
 
 \begin{definition}
     [Binomial Random Variable]
@@ -195,7 +195,7 @@ Chebyshev's allows us to bound the probability that a random variable deviates b
         \mathbb{E}\left[ S_n\right]  &= \mathbb{E}\left[ 
             \sum\limits_{i = 1}^{n}  X_i
         \right] \quad \text{by definition}\\
-        &= \sum\limits_{i = 1}^{n}  X_i \quad \text{by linearity of expectation} \\
+        &= \sum\limits_{i = 1}^{n} \mathbb{E}\left[ X_i \right]  \quad \text{by linearity of expectation} \\
         &= \sum\limits_{i = 1}^{n}  p \\
         &= np
     \end{align*}

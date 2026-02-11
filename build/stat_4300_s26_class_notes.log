@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.29)  10 FEB 2026 11:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.29)  10 FEB 2026 21:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1685,7 +1685,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 208--209
 
 [23] [24]) (./appendix.tex) [25] (build/stat_4300_s26_class_notes.aux)
 Package rerunfilecheck Info: File `stat_4300_s26_class_notes.out' has not changed.
-(rerunfilecheck)             Checksum: 43644228577CDC471328B2E8E0AA1383;9300.
+(rerunfilecheck)             Checksum: AFF415E566AD4C485D075111108D3D8A;9310.
 Package logreq Info: Writing requests to 'stat_4300_s26_class_notes.run.xml'.
 \openout1 = `stat_4300_s26_class_notes.run.xml'.
 

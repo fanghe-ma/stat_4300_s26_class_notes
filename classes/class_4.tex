@@ -132,6 +132,17 @@ appears exactly $m_i$ times.
     \]
 \end{definition}
 
+\begin{theorem}[Linearity of Expectation]
+    Let $X, Y$ be discrete random variables, and $a, b$ be constants, then 
+    \[
+        \mathbb{E}\left[ a X + bY \right]  = a \mathbb{E}\left[ X\right]  + b \mathbb{E}\left[ Y\right] 
+    \]
+\end{theorem}
+
+\begin{remark}
+    In general, $\mathbb{E}\left[ g(X)\right]  \neq g( \mathbb{E}\left[ X\right] )$.
+\end{remark}
+
 
 \subsubsection{Indicator random variables}
 
@@ -159,16 +170,6 @@ appears exactly $m_i$ times.
     \end{align*}
 \end{proof}
 
-\begin{theorem}[Linearity of Expectation]
-    Let $X, Y$ be discrete random variables, and $a, b$ be constants, then 
-    \[
-        \mathbb{E}\left[ a X + bY \right]  = a \mathbb{E}\left[ X\right]  + b \mathbb{E}\left[ Y\right] 
-    \]
-\end{theorem}
-
-\begin{remark}
-    In general, $\mathbb{E}\left[ g(X)\right]  \neq g( \mathbb{E}\left[ X\right] )$.
-\end{remark}
 
 \begin{theorem}[Law of total probability] 
     Let $A_1, \hdots A_n$ be a partition of $\Omega$, define a discrete random variable $I : \Omega \to \{ 1, 2, \hdots n \}$  by 
