@@ -12,13 +12,13 @@
 \textbf{Distribution} & \textbf{Parameters} & \textbf{PMF} $P(X = k)$ & \textbf{CDF} $F(k)$ & $\E[X]$ & $\operatorname{Var}(X)$ \\
 \midrule
 
-Discrete Uniform
-& $a, b \in \Z$, $a \leq b$
-& $\dfrac{1}{b - a + 1}$,\; $k \in \{a, \ldots, b\}$
-& $\dfrac{k - a + 1}{b - a + 1}$
-& $\dfrac{a + b}{2}$
-& $\dfrac{(b - a)(b - a + 2)}{12}$
-\\
+% Discrete Uniform
+% & $a, b \in \Z$, $a \leq b$
+% & $\dfrac{1}{b - a + 1}$,\; $k \in \{a, \ldots, b\}$
+% & $\dfrac{k - a + 1}{b - a + 1}$
+% & $\dfrac{a + b}{2}$
+% & $\dfrac{(b - a)(b - a + 2)}{12}$
+% \\
 
 Bernoulli
 & $p \in [0,1]$
@@ -31,7 +31,8 @@ Bernoulli
 Binomial
 & $n \in \N$, $p \in [0,1]$
 & $\dbinom{n}{k} p^k (1-p)^{n-k}$,\; $k \in \{0, \ldots, n\}$
-& $\displaystyle\sum_{i=0}^{k} \dbinom{n}{i} p^i (1-p)^{n-i}$
+&
+% & $\displaystyle\sum_{i=0}^{k} \dbinom{n}{i} p^i (1-p)^{n-i}$
 & $np$
 & $np(1-p)$
 \\
@@ -44,13 +45,13 @@ Geometric
 & $\dfrac{1-p}{p^2}$
 \\
 
-% Negative Binomial
-% & $r \in \N$, $p \in (0,1]$
-% & $\dbinom{k-1}{r-1} p^r (1-p)^{k-r}$,\; $k \in \{r, r+1, \ldots\}$
-% & No closed form
-% & $\dfrac{r}{p}$
-% & $\dfrac{r(1-p)}{p^2}$
-% \\
+Pascal
+& $r \in \N$, $p \in (0,1]$
+& $\dbinom{k-1}{r-1} p^r (1-p)^{k-r}$,\; $k \in \{r, r+1, \ldots\}$
+& 
+& $\dfrac{r}{p}$
+& $\dfrac{r(1-p)}{p^2}$
+\\
 
 % Poisson
 % & $\lambda > 0$
@@ -136,16 +137,4 @@ Geometric
 % \end{tabular}
 % \end{adjustbox}
 % \end{center}
-
-% \begin{remark}
-%     In the table above:
-%     \begin{itemize}
-%         \item $\Phi(z) = \displaystyle\int_{-\infty}^{z} \frac{1}{\sqrt{2\pi}} e^{-t^2/2}\, dt$ is the standard normal CDF.
-%         \item $\Gamma(\alpha) = \displaystyle\int_0^\infty t^{\alpha-1} e^{-t}\, dt$ is the gamma function. For positive integers, $\Gamma(n) = (n-1)!$
-%         \item $B(\alpha, \beta) = \dfrac{\Gamma(\alpha)\,\Gamma(\beta)}{\Gamma(\alpha + \beta)}$ is the beta function.
-%         \item The chi-squared distribution with $k$ degrees of freedom is a special case of the gamma distribution with $\alpha = k/2$ and $\beta = 1/2$.
-%         \item The exponential distribution with parameter $\lambda$ is a special case of the gamma distribution with $\alpha = 1$ and $\beta = \lambda$.
-%     \end{itemize}
-% \end{remark}
-
 % \newpage

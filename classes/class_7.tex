@@ -1,0 +1,111 @@
+\section{Class 7 - Pascal Random Variables}
+
+\subsection{Pascal Random Variables}
+
+\begin{definition}[Pascal random variable]
+    A random variable $T_r$ is said to be a \textbf{Pascal} ranodm variable with parameters $r, p$, denoted $T_r \sim \operatorname{Pascal}(r, p) $ if its PMF is given by 
+    \[
+        P_{T_r}(k) = P (T_r = k) = \binom{k-1}{r-1} p^r (1-p)^{k-r}
+    \]
+
+    for $k = r , r+1, r+ 2, \hdots$, $p \in (0, 1)$.
+    
+
+\end{definition}
+
+\begin{remark}
+    A Pascal random variable, $T_r \in \operatorname{Pascal}(r, p)$ can be understood as the waiting time until we see exactly $r$ successes, where each identical trial has success probability $p \in [0, 1]$. \\
+    
+    $T_r$ takes as its support $\operatorname{supp}(T_r) = \{ r, r+1, r+2 \hdots \} $.  \\
+
+    $T_r$ is the sum of $r$ iid geometric random variables. 
+    \[
+        T_r = \sum\limits_{i = 1}^{r} G_i, \quad G_i \sim \operatorname{Geom} (p)
+    \]
+    This gives us a much easier way to calculate its mean and variance, as shown below.
+\end{remark}
+
+
+\begin{result}[Moments of Pascal Random Variables]
+    The expectation is 
+    \[
+        \mathbb{E}\left[ T_r\right]  = \mathbb{E}\left[  \sum\limits_{i = 1}^{r} G_i \right]  = \sum\limits_{i = 1}^{r} \mathbb{E}\left[ G_i \right]  = \frac{r}{p}
+    \]
+
+    The variance is 
+    \[
+        Var(T_r) = Var \left( \sum\limits_{i = 1}^{r} G_i \right)  = \sum\limits_{i = 1}^{r} Var (G_r) = \frac{r(1-p)}{p^2}
+    \]
+\end{result}
+
+\begin{example}[Coupon Collector Problem]
+    Given $n$ distinct coupons. Let $T$ be the time it takes to see all $n$ coupons. \\
+
+    This is a classic waiting time problem. $T$ is a sum of independent geometric random variables. \textbf{Unlike the Pascal random variable}, which is a sum of independent, identical geometric random variables, here the geometric random variables are \textbf{not identical}. \\
+
+    Define $G_i$ to be the time taken to see the $i$-th new coupon. Then for $i \in \{ 1, 2, \hdots n \} $
+    \begin{align*}
+        G_1 & \sim \operatorname{Geom} (1) \\
+        G_2 & \sim \operatorname{Geom} \left( \frac{n-1}{n} \right)  \\
+        G_3 & \sim \operatorname{Geom} \left( \frac{n-2}{n} \right)  \\  
+        \vdots & \\
+        G_i & \sim \operatorname{Geom}  \left(  \frac{n-(i-1)}{n} \right) 
+    \end{align*}
+    Alternatively, we can reindex and write the same thing as, for $j \in \{ 1, 2, \hdots, n \} $
+    \[
+        G_{n-(j-1)} \sim \operatorname{Geom} \left( \frac{j}{n} \right) 
+    \]
+
+    We can find the expectation 
+    \begin{align*}
+        \mathbb{E}\left[ T\right] &= \mathbb{E}\left[  \sum\limits_{j = 1}^{n} G_{n - (j-1)}\right]  \\
+        &= \sum\limits_{j=1}^{n}  \mathbb{E}\left[ G_{j - (n-1)}\right]  \\
+        &= \sum\limits_{j=1}^{n}  \frac{n}{j} \\
+        &= n \sum\limits_{j=1}^{n}  \frac{1}{j} \\
+        &= \Theta(n \log (n))
+    \end{align*}
+
+    Another way of seeing this is 
+    \begin{align*}
+        T &= G_1 + G_2 + G_3 + \hdots G_n \\
+        \mathbb{E}\left[  T \right] &= \mathbb{E}\left[G_1 \right]  + \mathbb{E}\left[ G_2\right]  + \hdots \mathbb{E}\left[ G_n\right]  \\
+        &=  \mathbb{E}\left[ \operatorname{Geom}(1)  \right]  + \mathbb{E}\left[ \operatorname{Geom} \left( \frac{n-1}{n} \right)  \right] + \mathbb{E}\left[ \operatorname{Geom} \left( \frac{n-2}{n} \right) \right] + \hdots \mathbb{E}\left[ \operatorname{Geom} \left( \frac{1}{n} \right) \right] \\
+        &= 1 + \frac{n}{n-1} + \frac{n}{n-2} + \hdots + n 
+    \end{align*}
+    
+
+    We can show that the summation of $ \frac{1}{j}$ grows on the order of $\log n$. For $j \geq 2$, 
+    \[
+        \frac{1}{j} \leq \int_{j-1}^{j}  \frac{1}{x} dx
+    \]
+    For $j \geq 1$,
+    \[
+        \int_{j-1}^{j}  \frac{1}{x} dx \leq \frac{1}{j}
+    \]
+
+    Then 
+    \[
+        \log (n+1) = \int_{1}^{n+1}   \frac{1}{x} dx \leq \sum\limits_{j = 1}^{n} \frac{1}{j} \leq 1 + \int_{1}^{n}  \frac{1}{x} dx  = 1 + \log(n)
+    \]
+
+    We can also find the variance 
+    \begin{align*}
+        Var(T) &= Var \left( \sum\limits_{j=1}^{n} G_{n - (j-1)} \right)  \\
+        &= \sum\limits_{j=1}^{n}  Var \left( G_{n-(j-1)} \right)  \\
+        &= \sum\limits_{j=1}^{n}  \frac{1 - \frac{j}{n}}{ \frac{j^2}{n^2}} \\
+        &= \sum\limits_{j=1}^{n}  \frac{n^2}{j^2} - \frac{n}{j} \\
+        &= \frac{n^2 \pi}{6} - n \sum\limits_{j=1}^{n} \frac{1}{j} \\
+        &= \Theta(n^2)
+    \end{align*}
+
+
+
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/7-1.png}
+    \end{center}
+
+\end{example}
+
+
+\newpage
+

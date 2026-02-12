@@ -13,3 +13,9 @@
 # *.bbl
 # *.blg
 # *.run.xml
+
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
