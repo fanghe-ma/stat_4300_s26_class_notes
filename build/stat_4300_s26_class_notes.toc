@@ -40,7 +40,8 @@
 \contentsline {section}{\numberline {6}Class 6 - Tail Sums, Discrete Waiting Times and Geometric Random Variables}{21}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Tail Sum Formula}{21}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Geometric Random Variables}{21}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Class 7 - Pascal Random Variables}{26}{section.7}%
+\contentsline {section}{\numberline {7}Class 7 - Pascal Random Variables and Coupon Collector Probelm}{26}{section.7}%
 \contentsline {subsection}{\numberline {7.1}Pascal Random Variables}{26}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Coupon Collector Problem}{26}{subsection.7.2}%
 \contentsline {section}{\numberline {A}Table of Common Distributions}{29}{appendix.A}%
 \contentsline {subsection}{\numberline {A.1}Discrete Distributions}{29}{subsection.A.1}%

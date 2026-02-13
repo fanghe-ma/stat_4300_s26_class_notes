@@ -1,4 +1,4 @@
-\section{Class 7 - Pascal Random Variables}
+\section{Class 7 - Pascal Random Variables and Coupon Collector Probelm}
 
 \subsection{Pascal Random Variables}
 
@@ -14,7 +14,7 @@
 \end{definition}
 
 \begin{remark}
-    A Pascal random variable, $T_r \in \operatorname{Pascal}(r, p)$ can be understood as the waiting time until we see exactly $r$ successes, where each identical trial has success probability $p \in [0, 1]$. \\
+    A Pascal random variable, $T_r \in \operatorname{Pascal}(r, p)$ can be understood as the waiting time until we see exactly $r$ successes, where each identical trial has success probability $p \in (0, 1]$. \\
     
     $T_r$ takes as its support $\operatorname{supp}(T_r) = \{ r, r+1, r+2 \hdots \} $.  \\
 
@@ -38,10 +38,51 @@
     \]
 \end{result}
 
+\subsection{Coupon Collector Problem}
+
+The coupon collector problem is a classic waiting time problem. We now have a way to think about the mean, variance and concentration of the random variable that we want to study. \\
+
+To think about what happens to the waiting time as the number of trials get large, we use the following notation.
+
+\begin{definition}[Asymptotic tight bound, $\Theta$-notation]
+    For a function $f(n)$, we say that a function $g(n)$ is an \textbf{asymptotically tight bound} for $f(n)$, or $f(n)$ is $\Theta(g(n))$, or $f(n) \in \Theta(g(n))$ if there exists positive constants $c_1, c_2, n_0$ such that for all $n \geq n_0$
+    \[
+        0 \leq c_1 g(n) \leq f(n) \leq c_2 g(n)
+    \]
+\end{definition}
+
+% \begin{remark}
+%     $g(n)$ is asymptotic tight bound of $f(n)$ if past a certain point, $f(n)$ gets sandwiched by scaled versions of $g(n)$.
+%     \begin{center}
+% \begin{tikzpicture}[scale=0.8]
+%     \draw[thick,->] (0,0) -- (7.5,0) node[right, font=\large] {$n$};
+%     \draw[thick,->] (0,0) -- (0,5.5);
+    
+%     \def\nzero{1.2}
+%     \draw[dashed, gray, thick] (\nzero,0) -- (\nzero,5);
+%     \node[below, font=\large] at (\nzero,-0.15) {$n_0$};
+    
+%     \draw[thick, domain=0:7, smooth, samples=100] 
+%         plot (\x, {0.35*\x^1.2});
+%     \node[right, font=\large] at (7.1, {0.35*7^1.2}) {$c_2g(n)$};
+    
+%     \draw[thick, domain=0:7, smooth, samples=150] 
+%         plot (\x, {0.22*\x^1.2 + 0.12*exp(-0.8*\x)*sin(deg(5*\x))});
+%     \node[right, font=\large] at (7.1, {0.22*7^1.2}) {$f(n)$};
+    
+%     \draw[thick, domain=0:7, smooth, samples=100] 
+%         plot (\x, {0.12*\x^1.2});
+%     \node[right, font=\large] at (7.1, {0.12*7^1.2}) {$c_1g(n)$};
+% \end{tikzpicture}
+%     \end{center}
+% \end{remark}
+
+
+
 \begin{example}[Coupon Collector Problem]
     Given $n$ distinct coupons. Let $T$ be the time it takes to see all $n$ coupons. \\
 
-    This is a classic waiting time problem. $T$ is a sum of independent geometric random variables. \textbf{Unlike the Pascal random variable}, which is a sum of independent, identical geometric random variables, here the geometric random variables are \textbf{not identical}. \\
+    $T$ is a sum of independent geometric random variables. \textbf{Unlike the Pascal random variable}, which is a sum of independent, identical geometric random variables, here the geometric random variables are \textbf{not identical}. \\
 
     Define $G_i$ to be the time taken to see the $i$-th new coupon. Then for $i \in \{ 1, 2, \hdots n \} $
     \begin{align*}
@@ -74,19 +115,6 @@
     \end{align*}
     
 
-    We can show that the summation of $ \frac{1}{j}$ grows on the order of $\log n$. For $j \geq 2$, 
-    \[
-        \frac{1}{j} \leq \int_{j-1}^{j}  \frac{1}{x} dx
-    \]
-    For $j \geq 1$,
-    \[
-        \int_{j-1}^{j}  \frac{1}{x} dx \leq \frac{1}{j}
-    \]
-
-    Then 
-    \[
-        \log (n+1) = \int_{1}^{n+1}   \frac{1}{x} dx \leq \sum\limits_{j = 1}^{n} \frac{1}{j} \leq 1 + \int_{1}^{n}  \frac{1}{x} dx  = 1 + \log(n)
-    \]
 
     We can also find the variance 
     \begin{align*}
@@ -100,11 +128,43 @@
 
 
 
+\end{example}
+
+\begin{example}[Coupon Collector Expectation]
+    The expectation grows on the order of $n\log n$. \\
+
+    We can show that the summation of $ \frac{1}{j}$ grows on the order of $\log n$. For $j \geq 2$, 
+    \[
+        \frac{1}{j} \leq \int_{j-1}^{j}  \frac{1}{x} dx
+    \]
+    For $j \geq 1$,
+    \[
+        \int_{j}^{j+1}  \frac{1}{x} dx \leq \frac{1}{j}
+    \]
+
+    Then 
+    \[
+        \log (n+1) = \int_{1}^{n+1}   \frac{1}{x} dx \leq \sum\limits_{j = 1}^{n} \frac{1}{j} \leq 1 + \int_{1}^{n}  \frac{1}{x} dx  = 1 + \log(n)
+    \]
+
+    Let $H_n = \sum\limits_{j=1}^{n} \frac{1}{j}$ , then we can take $c_1 = 1, c_2 = 2, n_0 = 2$, and for all $n \geq n_0$
+    \[
+        \log n \leq \log (n + 1) \leq H_n \leq 1 + \log n \leq 2 \log n \implies H_n \in \Theta(\log(n))
+    \]
+    
+\end{example}
+
+\begin{remark}[Pascal Concentration / Anti-concentration]
+
+    For a Pascal random variable, concentration decreaeses in $r$ and increases in $p$.
     \begin{center}
         \includegraphics[width=0.8\textwidth]{figures/7-1.png}
     \end{center}
+\end{remark}
 
-\end{example}
+
+
+
 
 
 \newpage
